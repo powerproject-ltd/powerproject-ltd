@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Boxes } from "@/components/ui/background-boxes";
 
 export default function Home() {
@@ -35,7 +36,7 @@ export default function Home() {
     e.preventDefault();
     // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you soon.');
+    alert('Thank you for your message! We&apos;ll get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -68,9 +69,11 @@ export default function Home() {
             {/* Logo Section with Cyberpunk Elements */}
             <div className="flex items-center group">
               <div className="relative">
-                <img 
+                <Image 
                   src="/assets/logobgr.png" 
                   alt="PowerProject Logo" 
+                  width={40}
+                  height={40}
                   className="h-10 w-auto mr-4 logo-img group-hover:scale-110 transition-all duration-300 relative z-10"
                 />
                 {/* Cyberpunk hexagon frame */}
@@ -111,7 +114,7 @@ export default function Home() {
                 { name: 'ABOUT', id: 'about', icon: '🔧', code: 'ABT' },
                 { name: 'PROJECTS', id: 'projects', icon: '🚀', code: 'PRJ' },
                 { name: 'CONTACT', id: 'contact', icon: '📡', code: 'CNT' }
-              ].map((item, index) => (
+              ].map((item) => (
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
@@ -209,9 +212,11 @@ export default function Home() {
           <div className="text-center">
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="mb-6">
-                <img 
+                <Image 
                   src="/assets/powerproject.png" 
                   alt="PowerProject" 
+                  width={160}
+                  height={160}
                   className="h-24 md:h-36 lg:h-40 w-auto mx-auto mb-4 logo-img hero-logo"
                 />
               </div>
@@ -292,9 +297,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="mb-6">
-              <img 
+              <Image 
                 src="/assets/logobgr.png" 
                 alt="PowerProject Logo" 
+                width={64}
+                height={64}
                 className="h-16 w-auto mx-auto mb-4 logo-img"
               />
             </div>
@@ -369,9 +376,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="mb-6">
-              <img 
+              <Image 
                 src="/assets/powerproject.png" 
                 alt="PowerProject" 
+                width={80}
+                height={80}
                 className="h-20 w-auto mx-auto mb-4 logo-img"
               />
             </div>
@@ -523,7 +532,7 @@ export default function Home() {
               <span className="cyberpunk-text">[READY_TO_START?]</span>
             </h2>
             <p className="text-xl text-cyan-400/80 font-mono mb-8">
-              [INITIATE] Let's discuss your project and bring your vision to life
+              [INITIATE] Let&apos;s discuss your project and bring your vision to life
             </p>
             
             {/* Contact Information */}
@@ -610,9 +619,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
-              <img 
+              <Image 
                 src="/assets/logo.jpeg" 
                 alt="PowerProject Logo" 
+                width={48}
+                height={48}
                 className="h-12 w-auto mr-3 logo-img"
               />
               <div className="text-2xl font-bold cyberpunk-text font-mono">PowerProject</div>
