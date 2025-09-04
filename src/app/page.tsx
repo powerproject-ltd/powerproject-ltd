@@ -626,7 +626,7 @@ export default function Home() {
               <a href="#" className="text-cyan-400/60 hover:text-cyan-400 transition-colors font-mono cyberpunk-glow">[TWITTER]</a>
             </div>
             <div className="mt-8 pt-8 border-t border-cyan-400/20 text-cyan-400/60 text-sm font-mono">
-              © 2024 PowerProject. [STATUS: ALL_RIGHTS_RESERVED]
+              © 2025 PowerProject. [STATUS: ALL_RIGHTS_RESERVED]
             </div>
           </div>
         </div>
