@@ -70,7 +70,7 @@ To transform innovative ideas into powerful software solutions that drive busine
 
 ## 🎮 Live Demo
 
-Experience the cyberpunk website: **[View Live Site](https://powerproject-ltd.github.io/powerproject-ltd/)**
+Experience the cyberpunk website: **[View Live Site](https://powerproject-ltd.vercel.app/)**
 
 ## 📦 Installation & Setup
 
