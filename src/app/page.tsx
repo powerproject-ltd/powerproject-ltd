@@ -49,8 +49,8 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,212,255,0.1),transparent_50%)]"></div>
         
         {/* Animated data streams */}
-        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-data-stream"></div>
-        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-secondary to-transparent animate-data-stream" style={{animationDelay: '1.5s'}}></div>
+        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-data-stream"></div>
+        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent animate-data-stream" style={{animationDelay: '1.5s'}}></div>
         
         {/* Tech status indicators */}
         <div className="absolute top-2 right-4 flex items-center space-x-2 text-xs text-primary/60 font-mono">
@@ -76,32 +76,32 @@ export default function Home() {
                   height={40}
                   className="h-10 w-auto mr-4 logo-img group-hover:scale-110 transition-all duration-300 relative z-10"
                 />
-                {/* Cyberpunk hexagon frame */}
+                {/* Professional hexagon frame */}
                 <div className="absolute -inset-3 w-16 h-16">
-                  <div className="absolute inset-0 border-2 border-cyan-400/40 group-hover:border-cyan-400/80 transition-all duration-500 transform rotate-45"></div>
-                  <div className="absolute inset-1 border border-pink-400/30 group-hover:border-pink-400/60 transition-all duration-700 transform rotate-45"></div>
+                  <div className="absolute inset-0 border-2 border-blue-500/40 group-hover:border-blue-500/80 transition-all duration-500 transform rotate-45"></div>
+                  <div className="absolute inset-1 border border-emerald-500/30 group-hover:border-emerald-500/60 transition-all duration-700 transform rotate-45"></div>
                 </div>
-                {/* Cyberpunk corner brackets */}
-                <div className="absolute -top-2 -left-2 w-4 h-4 border-l-2 border-t-2 border-cyan-400/60 group-hover:border-cyan-400 transition-all duration-300"></div>
-                <div className="absolute -top-2 -right-2 w-4 h-4 border-r-2 border-t-2 border-cyan-400/60 group-hover:border-cyan-400 transition-all duration-300"></div>
-                <div className="absolute -bottom-2 -left-2 w-4 h-4 border-l-2 border-b-2 border-pink-400/60 group-hover:border-pink-400 transition-all duration-300"></div>
-                <div className="absolute -bottom-2 -right-2 w-4 h-4 border-r-2 border-b-2 border-pink-400/60 group-hover:border-pink-400 transition-all duration-300"></div>
+                {/* Professional corner brackets */}
+                <div className="absolute -top-2 -left-2 w-4 h-4 border-l-2 border-t-2 border-blue-500/60 group-hover:border-blue-500 transition-all duration-300"></div>
+                <div className="absolute -top-2 -right-2 w-4 h-4 border-r-2 border-t-2 border-blue-500/60 group-hover:border-blue-500 transition-all duration-300"></div>
+                <div className="absolute -bottom-2 -left-2 w-4 h-4 border-l-2 border-b-2 border-emerald-500/60 group-hover:border-emerald-500 transition-all duration-300"></div>
+                <div className="absolute -bottom-2 -right-2 w-4 h-4 border-r-2 border-b-2 border-emerald-500/60 group-hover:border-emerald-500 transition-all duration-300"></div>
                 {/* Scanning lines */}
                 <div className="absolute inset-0 overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-scan-line"></div>
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-pink-400 to-transparent animate-scan-line" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-scan-line"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent animate-scan-line" style={{animationDelay: '1s'}}></div>
                 </div>
               </div>
               <div className="flex flex-col">
                 <div className="text-2xl font-bold cyberpunk-text group-hover:scale-105 transition-transform duration-300 relative">
                   PowerProject
                 </div>
-                <div className="text-xs text-cyan-400/80 font-mono tracking-wider flex items-center space-x-2">
+                <div className="text-xs text-blue-400/80 font-mono tracking-wider flex items-center space-x-2">
                   <span className="cyberpunk-glow">[AI-POWERED_SOLUTIONS]</span>
                   <div className="flex space-x-1">
-                    <div className="w-1 h-1 bg-cyan-400 rounded-full animate-cyber-pulse"></div>
-                    <div className="w-1 h-1 bg-pink-400 rounded-full animate-cyber-pulse" style={{animationDelay: '0.3s'}}></div>
-                    <div className="w-1 h-1 bg-purple-400 rounded-full animate-cyber-pulse" style={{animationDelay: '0.6s'}}></div>
+                    <div className="w-1 h-1 bg-blue-500 rounded-full animate-cyber-pulse"></div>
+                    <div className="w-1 h-1 bg-emerald-500 rounded-full animate-cyber-pulse" style={{animationDelay: '0.3s'}}></div>
+                    <div className="w-1 h-1 bg-violet-500 rounded-full animate-cyber-pulse" style={{animationDelay: '0.6s'}}></div>
                   </div>
                 </div>
               </div>
@@ -118,18 +118,18 @@ export default function Home() {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
-                  className="group relative px-4 py-3 text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:bg-cyan-400/5 border border-transparent hover:border-cyan-400/30 cyberpunk-nav-item"
+                  className="group relative px-4 py-3 text-gray-300 hover:text-blue-400 transition-all duration-300 hover:bg-blue-400/5 border border-transparent hover:border-blue-400/30 cyberpunk-nav-item"
                 >
                   <span className="flex items-center space-x-2">
-                    <span className="text-sm group-hover:scale-110 transition-transform duration-300 text-cyan-400">
+                    <span className="text-sm group-hover:scale-110 transition-transform duration-300 text-blue-500">
                       {item.icon}
                     </span>
                     <span className="font-mono text-sm font-medium">{item.name}</span>
-                    <span className="text-xs text-pink-400/60 font-mono">[{item.code}]</span>
+                    <span className="text-xs text-emerald-400/60 font-mono">[{item.code}]</span>
                   </span>
-                  {/* Cyberpunk hover effect */}
-                  <div className="absolute inset-0 border border-cyan-400/20 group-hover:border-cyan-400/60 transition-all duration-300"></div>
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-pink-400 group-hover:w-full transition-all duration-300"></div>
+                  {/* Professional hover effect */}
+                  <div className="absolute inset-0 border border-blue-500/20 group-hover:border-blue-500/60 transition-all duration-300"></div>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 group-hover:w-full transition-all duration-300"></div>
                 </button>
               ))}
             </div>
@@ -144,8 +144,8 @@ export default function Home() {
                   <span>[INITIATE]</span>
                   <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
                 </span>
-                {/* Cyberpunk animated background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-pink-400 to-purple-400 bg-[length:200%_100%] group-hover:animate-gradient-x"></div>
+                {/* Professional animated background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-emerald-500 to-violet-500 bg-[length:200%_100%] group-hover:animate-gradient-x"></div>
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
               </button>
             </div>
@@ -156,15 +156,15 @@ export default function Home() {
               className="lg:hidden relative w-10 h-10 flex items-center justify-center group cyberpunk-menu-btn"
             >
               <div className="relative w-6 h-6">
-                <span className={`absolute top-0 left-0 w-6 h-0.5 bg-cyan-400 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
-                <span className={`absolute top-2.5 left-0 w-6 h-0.5 bg-cyan-400 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`absolute top-5 left-0 w-6 h-0.5 bg-cyan-400 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
+                <span className={`absolute top-0 left-0 w-6 h-0.5 bg-blue-500 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
+                <span className={`absolute top-2.5 left-0 w-6 h-0.5 bg-blue-500 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
+                <span className={`absolute top-5 left-0 w-6 h-0.5 bg-blue-500 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
               </div>
             </button>
           </div>
 
           {/* Mobile Menu */}
-          <div className={`lg:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-cyan-400/20 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+          <div className={`lg:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-blue-500/20 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
             <div className="px-4 py-6 space-y-4">
               {[
                 { name: 'SERVICES', id: 'services', icon: '⚡', desc: 'Our Solutions', code: 'SVC' },
@@ -178,16 +178,16 @@ export default function Home() {
                     scrollToSection(item.id);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full flex items-center space-x-4 p-3 text-gray-300 hover:text-cyan-400 hover:bg-cyan-400/5 border border-transparent hover:border-cyan-400/30 transition-all duration-300 group cyberpunk-mobile-item"
+                  className="w-full flex items-center space-x-4 p-3 text-gray-300 hover:text-blue-400 hover:bg-blue-400/5 border border-transparent hover:border-blue-400/30 transition-all duration-300 group cyberpunk-mobile-item"
                 >
-                  <span className="text-xl group-hover:scale-110 transition-transform duration-300 text-cyan-400">
+                  <span className="text-xl group-hover:scale-110 transition-transform duration-300 text-blue-500">
                     {item.icon}
                   </span>
                   <div className="flex-1 text-left">
                     <div className="font-mono font-medium">{item.name}</div>
-                    <div className="text-sm text-pink-400/60 font-mono">[{item.code}] {item.desc}</div>
+                    <div className="text-sm text-emerald-400/60 font-mono">[{item.code}] {item.desc}</div>
                   </div>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300 text-cyan-400">→</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300 text-blue-500">→</span>
                 </button>
               ))}
               <button 
@@ -247,19 +247,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Cyberpunk Floating Elements */}
-        <div className="absolute top-1/4 left-10 float-animation">
-          <div className="w-20 h-20 bg-cyan-400/20 rounded-full blur-xl animate-cyber-pulse"></div>
-          <div className="absolute inset-0 w-20 h-20 border border-cyan-400/30 rounded-full animate-spin-slow"></div>
-        </div>
-        <div className="absolute top-1/3 right-20 float-animation" style={{animationDelay: '2s'}}>
-          <div className="w-32 h-32 bg-pink-400/20 rounded-full blur-xl animate-cyber-pulse"></div>
-          <div className="absolute inset-0 w-32 h-32 border border-pink-400/30 rounded-full animate-spin-reverse"></div>
-        </div>
-        <div className="absolute bottom-1/4 left-1/2 float-animation" style={{animationDelay: '4s'}}>
-          <div className="w-16 h-16 bg-purple-400/20 rounded-full blur-xl animate-cyber-pulse"></div>
-          <div className="absolute inset-0 w-16 h-16 border border-purple-400/30 rounded-full animate-spin-slow"></div>
-        </div>
       </section>
 
       {/* Cyberpunk Stats Section */}
@@ -497,15 +484,15 @@ export default function Home() {
               { name: 'React', logo: '⚛️', color: 'text-blue-400' },
               { name: 'Next.js', logo: '▲', color: 'text-white' },
               { name: 'Node.js', logo: '🟢', color: 'text-green-400' },
-              { name: 'Python', logo: '🐍', color: 'text-yellow-400' },
+              { name: 'Express', logo: '🚀', color: 'text-gray-400' },
               { name: 'TypeScript', logo: '🔷', color: 'text-blue-500' },
               { name: 'AWS', logo: '☁️', color: 'text-orange-400' },
-              { name: 'Docker', logo: '🐳', color: 'text-blue-300' },
-              { name: 'Kubernetes', logo: '⚓', color: 'text-blue-600' },
+              { name: 'Shopify', logo: '🛍️', color: 'text-green-600' },
+              { name: 'Stripe', logo: '💳', color: 'text-purple-500' },
               { name: 'MongoDB', logo: '🍃', color: 'text-green-500' },
               { name: 'PostgreSQL', logo: '🐘', color: 'text-blue-700' },
-              { name: 'GraphQL', logo: '🔺', color: 'text-pink-400' },
-              { name: 'Redis', logo: '🔴', color: 'text-red-500' }
+              { name: 'Prisma', logo: '🔧', color: 'text-gray-300' },
+              { name: 'Vercel', logo: '▲', color: 'text-black' }
             ].map((tech) => (
               <div key={tech.name} className="cyberpunk-card text-center p-4 group">
                 <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">

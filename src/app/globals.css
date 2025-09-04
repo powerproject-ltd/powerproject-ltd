@@ -2,24 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Cyberpunk Dark Theme */
+/* Professional Tech Theme */
 :root {
-  --background: #0a0a0f;
+  --background: #0f0f23;
   --foreground: #ffffff;
-  --primary: #00ffff;
-  --primary-dark: #00cccc;
-  --secondary: #ff0080;
-  --secondary-dark: #cc0066;
-  --accent: #8000ff;
-  --accent-blue: #0080ff;
-  --muted: #1a1a1f;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #10b981;
+  --secondary-dark: #059669;
+  --accent: #8b5cf6;
+  --accent-blue: #06b6d4;
+  --muted: #1e1e2e;
   --muted-foreground: #a1a1aa;
-  --border: #333333;
-  --card: #111116;
+  --border: #374151;
+  --card: #111827;
   --card-foreground: #ffffff;
-  --cyan: #00ffff;
-  --pink: #ff0080;
-  --purple: #8000ff;
+  --cyan: #06b6d4;
+  --emerald: #10b981;
+  --violet: #8b5cf6;
   --neon-glow: 0 0 20px;
 }
 
@@ -53,9 +53,9 @@ html, body {
   background: var(--primary-dark);
 }
 
-/* Cyberpunk Gradient backgrounds */
+/* Professional Gradient backgrounds */
 .gradient-bg {
-  background: linear-gradient(135deg, #0a0a0f 0%, #1a0a1f 25%, #0a0a2f 50%, #1a0a1f 75%, #0a0a0f 100%);
+  background: linear-gradient(135deg, #0f0f23 0%, #1e1e2e 25%, #111827 50%, #1e1e2e 75%, #0f0f23 100%);
   position: relative;
 }
 
@@ -67,15 +67,15 @@ html, body {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(128, 0, 255, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, #0a0a0f 0%, #1a0a1f 25%, #0a0a2f 50%, #1a0a1f 75%, #0a0a0f 100%);
+  background: linear-gradient(135deg, #0f0f23 0%, #1e1e2e 25%, #111827 50%, #1e1e2e 75%, #0f0f23 100%);
   position: relative;
 }
 
@@ -87,8 +87,8 @@ html, body {
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(45deg, transparent 30%, rgba(0, 255, 255, 0.03) 50%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(255, 0, 128, 0.03) 50%, transparent 70%);
+    linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.02) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(16, 185, 129, 0.02) 50%, transparent 70%);
   pointer-events: none;
 }
 
@@ -350,21 +350,21 @@ html, body {
   
   .cyberpunk-button {
     @apply text-white px-8 py-4 rounded-lg font-mono font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer relative overflow-hidden;
-    background: linear-gradient(135deg, var(--cyan), var(--pink), var(--purple));
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
     min-height: 52px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
   }
   
   .cyberpunk-button:hover {
     background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark), var(--accent));
     transform: translateY(-3px);
-    box-shadow: 0 20px 40px rgba(0, 255, 255, 0.4);
-    border-color: rgba(0, 255, 255, 0.6);
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
+    border-color: rgba(59, 130, 246, 0.6);
   }
   
   .cyberpunk-button:before {
@@ -383,13 +383,13 @@ html, body {
   }
   
   .cyberpunk-text {
-    background: linear-gradient(135deg, #00ffff 0%, #ff0080 50%, #8000ff 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #10b981 50%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: #00ffff;
+    color: #3b82f6;
     display: inline-block;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
   }
   
   .cyberpunk-glow {
@@ -449,13 +449,13 @@ html, body {
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #00ffff 0%, #ff0080 50%, #8000ff 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #10b981 50%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: #00ffff; /* Fallback color for browsers that don't support background-clip */
+    color: #3b82f6; /* Fallback color for browsers that don't support background-clip */
     display: inline-block;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
   }
   
   .gradient-text-blue {
