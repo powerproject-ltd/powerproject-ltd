@@ -382,7 +382,7 @@ export default function Home() {
             <div>
               <h3 className="text-2xl font-bold mb-4 font-mono text-cyan-400">[OUR_MISSION]</h3>
               <p className="text-gray-300 mb-6 font-mono">
-                [EXECUTE] To transform innovative ideas into powerful software solutions that drive business growth and success in the digital age.
+                [EXECUTE] To transform innovative ideas into powerful software solutions that drive business growth and success in the digital age..
               </p>
               <button 
                 onClick={() => scrollToSection('contact')} 
