@@ -212,13 +212,28 @@ export default function Home() {
           <div className="text-center">
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="mb-6">
-                <Image 
-                  src="/assets/powerproject.png" 
-                  alt="PowerProject" 
-                  width={160}
-                  height={160}
-                  className="h-24 md:h-36 lg:h-40 w-auto mx-auto mb-4 logo-img hero-logo"
-                />
+                <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 mx-auto mb-4">
+                  {/* Outer logo spinning anticlockwise */}
+                  <div className="absolute inset-0 animate-spin-anticlockwise">
+                    <Image 
+                      src="/assets/outerlogo.png" 
+                      alt="PowerProject Outer Logo" 
+                      width={224}
+                      height={224}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  {/* Inner logo spinning clockwise */}
+                  <div className="absolute inset-4 md:inset-6 lg:inset-8 animate-spin-clockwise">
+                    <Image 
+                      src="/assets/innerlogo.png" 
+                      alt="PowerProject Inner Logo" 
+                      width={160}
+                      height={160}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
               </div>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 font-mono">
                 <span className="cyberpunk-text animate-neon-flicker">[AI-POWERED]</span>

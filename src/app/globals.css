@@ -200,6 +200,16 @@ html, body {
   100% { transform: translateY(100vh); opacity: 0; }
 }
 
+@keyframes spin-clockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-anticlockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
 .float-animation {
   animation: float 6s ease-in-out infinite;
 }
@@ -254,6 +264,14 @@ html, body {
 
 .animate-matrix-rain {
   animation: matrix-rain 10s linear infinite;
+}
+
+.animate-spin-clockwise {
+  animation: spin-clockwise 8s linear infinite;
+}
+
+.animate-spin-anticlockwise {
+  animation: spin-anticlockwise 12s linear infinite;
 }
 
 /* Custom components */
