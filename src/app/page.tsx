@@ -1,8 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo, Suspense } from 'react';
 import Image from 'next/image';
 import { Boxes } from "@/components/ui/background-boxes";
+import dynamic from 'next/dynamic';
+
+// Lazy load the Hyperspeed component for better performance
+const Hyperspeed = dynamic(() => import("@/components/HyperspeedComplete"), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-black" />
+});
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -17,33 +24,33 @@ export default function Home() {
     setIsVisible(true);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
-  };
+  }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! We&apos;ll get back to you soon.');
+    alert('Thank you for your message! We\'ll get back to you soon.');
     setFormData({ name: '', email: '', message: '' });
-  };
+  }, [formData]);
 
   return (
     <div className="min-h-screen gradient-bg tech-scrollbar">
       {/* Enhanced Technological Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-primary/20 shadow-2xl">
+      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-primary/20 shadow-2xl" role="navigation" aria-label="Main navigation">
         {/* Animated background grid */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 opacity-30"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,212,255,0.1),transparent_50%)]"></div>
@@ -93,11 +100,12 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex flex-col">
-                <div className="text-2xl font-bold cyberpunk-text group-hover:scale-105 transition-transform duration-300 relative futuristic-font">
+                <div className="text-lg sm:text-xl md:text-2xl font-bold cyberpunk-text group-hover:scale-105 transition-transform duration-300 relative futuristic-font">
                   PowerProject
                 </div>
-                <div className="text-xs text-blue-400/80 font-mono tracking-wider flex items-center space-x-2">
-                  <span className="cyberpunk-glow">[AI-POWERED_SOLUTIONS]</span>
+                <div className="text-xs text-blue-400/80 font-mono tracking-wider flex items-center space-x-1 sm:space-x-2">
+                  <span className="cyberpunk-glow hidden sm:inline">[AI-POWERED_SOLUTIONS]</span>
+                  <span className="cyberpunk-glow sm:hidden">[AI-POWERED]</span>
                   <div className="flex space-x-1">
                     <div className="w-1 h-1 bg-blue-500 rounded-full animate-cyber-pulse"></div>
                     <div className="w-1 h-1 bg-emerald-500 rounded-full animate-cyber-pulse" style={{animationDelay: '0.3s'}}></div>
@@ -154,6 +162,8 @@ export default function Home() {
                 <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden relative w-10 h-10 flex items-center justify-center group cyberpunk-menu-btn"
+              aria-label="Toggle mobile menu"
+              aria-expanded={isMobileMenuOpen}
             >
               <div className="relative w-6 h-6">
                 <span className={`absolute top-0 left-0 w-6 h-0.5 bg-blue-500 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
@@ -205,14 +215,52 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="hero-gradient pt-24 pb-12 relative overflow-hidden min-h-[80vh]">
-        <Boxes className="absolute inset-0 opacity-40 z-10" />
+      <section className="hero-gradient pt-24 pb-12 relative overflow-hidden min-h-[80vh]" id="home" aria-label="Hero section">
+        <Hyperspeed
+          effectOptions={{
+            onSpeedUp: () => { },
+            onSlowDown: () => { },
+            distortion: 'turbulentDistortion',
+            length: 400,
+            roadWidth: 10,
+            islandWidth: 2,
+            lanesPerRoad: 4,
+            fov: 90,
+            fovSpeedUp: 150,
+            speedUp: 2,
+            carLightsFade: 0.4,
+            totalSideLightSticks: 20,
+            lightPairsPerRoadWay: 40,
+            shoulderLinesWidthPercentage: 0.05,
+            brokenLinesWidthPercentage: 0.1,
+            brokenLinesLengthPercentage: 0.5,
+            lightStickWidth: [0.12, 0.5],
+            lightStickHeight: [1.3, 1.7],
+            movingAwaySpeed: [60, 80],
+            movingCloserSpeed: [-120, -160],
+            carLightsLength: [400 * 0.03, 400 * 0.2],
+            carLightsRadius: [0.05, 0.14],
+            carWidthPercentage: [0.3, 0.5],
+            carShiftX: [-0.8, 0.8],
+            carFloorSeparation: [0, 5],
+            colors: {
+              roadColor: 0x080808,
+              islandColor: 0x0a0a0a,
+              background: 0x000000,
+              shoulderLines: 0xFFFFFF,
+              brokenLines: 0xFFFFFF,
+              leftCars: [0xD856BF, 0x6750A2, 0xC247AC],
+              rightCars: [0x03B3C3, 0x0E5EA5, 0x324555],
+              sticks: 0x03B3C3,
+            }
+          }}
+        />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 relative z-20">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-16 relative z-20">
           <div className="text-center">
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="mb-6">
-                <div className="relative w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto mb-4">
+                <div className="relative w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto mb-4 -mt-8 md:-mt-12 lg:-mt-16">
                   {/* Outer logo spinning anticlockwise with glow */}
                   <div className="absolute inset-0 animate-spin-anticlockwise">
                     <div className="relative w-full h-full">
@@ -221,13 +269,15 @@ export default function Home() {
                       <div className="absolute inset-2 w-full h-full bg-gradient-to-r from-cyan-300/12 via-blue-400/16 to-purple-400/12 rounded-full blur-lg"></div>
                       <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400/8 via-blue-500/12 to-purple-500/8 rounded-full blur-xl animate-pulse-glow"></div>
                       <div className="absolute inset-2 w-full h-full bg-gradient-to-r from-cyan-300/6 via-blue-400/10 to-purple-400/6 rounded-full blur-lg animate-pulse-glow"></div>
-                      <Image 
-                        src="/assets/outerlogo.png" 
-                        alt="PowerProject Outer Logo" 
-                        width={320}
-                        height={320}
-                        className="w-full h-full object-contain relative z-10"
-                      />
+                                      <Image
+                  src="/assets/outerlogo.png"
+                  alt="PowerProject Outer Logo - Spinning outer ring representing our dynamic development process"
+                  width={320}
+                  height={320}
+                  className="w-full h-full object-contain relative z-10"
+                  priority
+                  quality={90}
+                />
                     </div>
                   </div>
                   {/* Inner logo spinning clockwise with glow */}
@@ -236,38 +286,44 @@ export default function Home() {
                       {/* Inner glow layers behind the logo */}
                       <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-400/10 via-cyan-400/15 to-blue-400/10 rounded-full blur-lg animate-pulse-glow-inner"></div>
                       <div className="absolute inset-1 w-full h-full bg-gradient-to-r from-emerald-300/8 via-cyan-300/12 to-blue-300/8 rounded-full blur-md"></div>
-                      <Image 
-                        src="/assets/innerlogo.png" 
-                        alt="PowerProject Inner Logo" 
+                                            <Image
+                        src="/assets/innerlogo.png"
+                        alt="PowerProject Inner Logo - Core technology hub spinning clockwise representing innovation"
                         width={200}
                         height={200}
                         className="w-full h-full object-contain relative z-10"
+                        priority
+                        quality={90}
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 futuristic-font">
-                <span className="cyberpunk-text animate-neon-flicker">[AI-POWERED]</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl professional-heading mb-6 px-4">
+                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                  AI-Powered
+                </span>
                 <br />
-                <span className="text-white cyberpunk-glow futuristic-text">SOFTWARE_DEVELOPMENT</span>
+                <span className="text-white">
+                  Software Development
+                </span>
               </h1>
-              <p className="text-lg md:text-xl text-cyan-400/80 mb-6 max-w-2xl mx-auto futuristic-mono">
-                [SYSTEM_INIT] Transform your ideas into cutting-edge software solutions with our expert team. 
-                [EXECUTE] Get your MVP developed in just 6 weeks with the latest technologies.
+              <p className="text-lg sm:text-xl md:text-2xl professional-subheading mb-8 px-4 max-w-4xl mx-auto leading-relaxed">
+                Transform your ideas into cutting-edge software solutions with our expert team. 
+                Get your MVP developed in just 6 weeks using the latest technologies.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button 
                   onClick={() => scrollToSection('contact')} 
-                  className="cyberpunk-button w-full sm:w-auto"
+                  className="glass-card glass-card-hover px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 w-full sm:w-auto"
                 >
-                  [INITIATE_PROJECT]
+                  Get Started
                 </button>
                 <button 
-                  onClick={() => scrollToSection('projects')} 
-                  className="border border-cyan-400 text-cyan-400 px-6 py-3 rounded-lg font-mono font-semibold hover:bg-cyan-400/10 hover:text-cyan-300 hover:border-cyan-300 transition-all duration-300 w-full sm:w-auto cyberpunk-glow"
+                  onClick={() => scrollToSection('about')}
+                  className="glass-card glass-card-hover px-8 py-4 rounded-xl font-semibold text-cyan-400 border border-cyan-400/30 hover:border-cyan-400/60 hover:bg-cyan-400/10 transition-all duration-300 w-full sm:w-auto"
                 >
-                  [VIEW_PORTFOLIO]
+                  Learn More
                 </button>
               </div>
             </div>
@@ -281,7 +337,7 @@ export default function Home() {
         {/* Cyberpunk grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="cyberpunk-card text-center">
               <div className="text-4xl font-bold cyberpunk-text mb-2 font-mono">[300+]</div>
@@ -308,7 +364,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,255,255,0.05),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,0,128,0.05),transparent_50%)]"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="mb-6">
               <Image 
@@ -319,7 +375,7 @@ export default function Home() {
                 className="h-16 w-auto mx-auto mb-4 logo-img"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 futuristic-heading">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[OUR_SERVICES]</span>
             </h2>
             <p className="text-xl text-cyan-400/80 max-w-3xl mx-auto font-mono">
@@ -383,11 +439,11 @@ export default function Home() {
       </section>
 
       {/* Cyberpunk About Section */}
-      <section id="about" className="py-20 relative overflow-hidden">
+      <section id="about" className="py-20 relative overflow-hidden" aria-label="About section">
         {/* Cyberpunk matrix-style background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <div className="mb-6">
               <Image 
@@ -398,7 +454,7 @@ export default function Home() {
                 className="h-20 w-auto mx-auto mb-4 logo-img"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 futuristic-heading">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[ABOUT_POWERPROJECT]</span>
             </h2>
             <p className="text-xl text-cyan-400/80 max-w-3xl mx-auto font-mono">
@@ -434,9 +490,9 @@ export default function Home() {
         {/* Cyberpunk grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-mono">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[OUR_PROJECTS]</span>
             </h2>
             <p className="text-xl text-cyan-400/80 font-mono">
@@ -496,9 +552,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(0,255,255,0.03),transparent_50%)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(255,0,128,0.03),transparent_50%)]"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-mono">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[TECH_STACK]</span>
             </h2>
             <p className="text-xl text-cyan-400/80 font-mono">
@@ -529,10 +585,12 @@ export default function Home() {
                 <div className="w-12 h-12 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
                   <Image
                     src={tech.logo}
-                    alt={`${tech.name} logo`}
+                    alt={`${tech.name} technology logo`}
                     width={48}
                     height={48}
                     className="w-full h-full object-contain"
+                    loading="lazy"
+                    quality={80}
                   />
                 </div>
                 <div className={`text-sm font-semibold font-mono ${tech.color} group-hover:text-cyan-400 transition-colors duration-300`}>
@@ -546,13 +604,13 @@ export default function Home() {
       </section>
 
       {/* Cyberpunk Contact Section */}
-      <section id="contact" className="py-20 relative overflow-hidden">
+      <section id="contact" className="py-20 relative overflow-hidden" aria-label="Contact section">
         {/* Cyberpunk terminal background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
         
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-mono">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[READY_TO_START?]</span>
             </h2>
             <p className="text-xl text-cyan-400/80 font-mono mb-8">
@@ -640,7 +698,7 @@ export default function Home() {
         {/* Cyberpunk grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
               <Image 

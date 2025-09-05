@@ -2,23 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Professional Tech Theme */
+/* Critical CSS - Load immediately */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-display: swap;
+  }
+}
+
+/* Professional Tech Theme - Mature & Sophisticated */
+
+/* Glass Morphism Effects */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(0, 245, 255, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 245, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Professional Typography */
+.professional-heading {
+  font-family: 'Orbitron', 'Exo 2', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.professional-subheading {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: var(--muted-foreground);
+}
+
+.professional-body {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+/* Sophisticated Animations */
+@keyframes professional-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes professional-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes professional-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.2);
+  }
+}
+
+.animate-professional-fade {
+  animation: professional-fade-in 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-professional-slide {
+  animation: professional-slide-up 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-professional-glow {
+  animation: professional-glow 3s ease-in-out infinite;
+}
 :root {
-  --background: #0f0f23;
-  --foreground: #ffffff;
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
-  --secondary: #10b981;
-  --secondary-dark: #059669;
-  --accent: #8b5cf6;
-  --accent-blue: #06b6d4;
-  --muted: #1e1e2e;
-  --muted-foreground: #a1a1aa;
-  --border: #374151;
-  --card: #111827;
-  --card-foreground: #ffffff;
-  --cyan: #06b6d4;
-  --emerald: #10b981;
+  --background: #0a0a0f;
+  --foreground: #f8fafc;
+  --primary: #00f5ff;
+  --primary-dark: #00d4ff;
+  --secondary: #00d4aa;
+  --secondary-dark: #00b894;
+  --accent: #6366f1;
+  --accent-blue: #00f5ff;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --border: #334155;
+  --card: #0f172a;
+  --card-foreground: #f1f5f9;
+  --cyan: #00f5ff;
+  --emerald: #00d4aa;
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(0, 245, 255, 0.2);
+  --gradient-primary: linear-gradient(135deg, #00f5ff 0%, #00d4aa 50%, #6366f1 100%);
+  --gradient-secondary: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   --violet: #8b5cf6;
   --neon-glow: 0 0 20px;
 }
@@ -75,7 +178,7 @@ html, body {
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, #0f0f23 0%, #1e1e2e 25%, #111827 50%, #1e1e2e 75%, #0f0f23 100%);
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #111111 50%, #0a0a0a 75%, #000000 100%);
   position: relative;
 }
 
@@ -87,9 +190,20 @@ html, body {
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.02) 50%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(16, 185, 129, 0.02) 50%, transparent 70%);
+    radial-gradient(circle at 20% 80%, rgba(3, 179, 195, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(216, 86, 191, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(0, 255, 255, 0.05) 0%, transparent 50%);
   pointer-events: none;
+  animation: bgPulse 6s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 /* Glow effects */
@@ -299,10 +413,14 @@ html, body {
 
 .animate-spin-clockwise {
   animation: spin-clockwise 8s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .animate-spin-anticlockwise {
   animation: spin-anticlockwise 12s linear infinite;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .animate-pulse-glow {
