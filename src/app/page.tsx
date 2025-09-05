@@ -70,8 +70,8 @@ export default function Home() {
             <div className="flex items-center group">
               <div className="relative">
                 <Image 
-                  src="/assets/logobgr.png" 
-                  alt="PowerProject Logo" 
+                src="/assets/logobgr.png" 
+                alt="PowerProject Logo" 
                   width={40}
                   height={40}
                   className="h-10 w-auto mr-4 logo-img group-hover:scale-110 transition-all duration-300 relative z-10"
@@ -115,7 +115,7 @@ export default function Home() {
                 { name: 'PROJECTS', id: 'projects', icon: '🚀', code: 'PRJ' },
                 { name: 'CONTACT', id: 'contact', icon: '📡', code: 'CNT' }
               ].map((item) => (
-                <button
+                <button 
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
                   className="group relative px-4 py-3 text-gray-300 hover:text-blue-400 transition-all duration-300 hover:bg-blue-400/5 border border-transparent hover:border-blue-400/30 cyberpunk-nav-item"
@@ -151,7 +151,7 @@ export default function Home() {
             </div>
 
             {/* Mobile Menu Button */}
-            <button
+                <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden relative w-10 h-10 flex items-center justify-center group cyberpunk-menu-btn"
             >
@@ -160,7 +160,7 @@ export default function Home() {
                 <span className={`absolute top-2.5 left-0 w-6 h-0.5 bg-blue-500 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
                 <span className={`absolute top-5 left-0 w-6 h-0.5 bg-blue-500 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
               </div>
-            </button>
+                </button>
           </div>
 
           {/* Mobile Menu */}
@@ -172,7 +172,7 @@ export default function Home() {
                 { name: 'PROJECTS', id: 'projects', icon: '🚀', desc: 'Our Work', code: 'PRJ' },
                 { name: 'CONTACT', id: 'contact', icon: '📡', desc: 'Get In Touch', code: 'CNT' }
               ].map((item) => (
-                <button
+                <button 
                   key={item.name}
                   onClick={() => {
                     scrollToSection(item.id);
@@ -190,7 +190,7 @@ export default function Home() {
                   <span className="group-hover:translate-x-1 transition-transform duration-300 text-blue-500">→</span>
                 </button>
               ))}
-              <button 
+                <button 
                 onClick={() => {
                   scrollToSection('contact');
                   setIsMobileMenuOpen(false);
@@ -198,7 +198,7 @@ export default function Home() {
                 className="w-full cyberpunk-button mt-4"
               >
                 [INITIATE]
-              </button>
+                </button>
             </div>
           </div>
         </div>
@@ -481,22 +481,32 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
-              { name: 'React', logo: '⚛️', color: 'text-blue-400' },
-              { name: 'Next.js', logo: '▲', color: 'text-white' },
-              { name: 'Node.js', logo: '🟢', color: 'text-green-400' },
-              { name: 'Express', logo: '🚀', color: 'text-gray-400' },
-              { name: 'TypeScript', logo: '🔷', color: 'text-blue-500' },
-              { name: 'AWS', logo: '☁️', color: 'text-orange-400' },
-              { name: 'Shopify', logo: '🛍️', color: 'text-green-600' },
-              { name: 'Stripe', logo: '💳', color: 'text-purple-500' },
-              { name: 'MongoDB', logo: '🍃', color: 'text-green-500' },
-              { name: 'PostgreSQL', logo: '🐘', color: 'text-blue-700' },
-              { name: 'Prisma', logo: '🔧', color: 'text-gray-300' },
-              { name: 'Vercel', logo: '▲', color: 'text-black' }
+              { name: 'React', logo: '/tech-logos/react.svg', color: 'text-blue-400' },
+              { name: 'Next.js', logo: '/tech-logos/nextjs.svg', color: 'text-white' },
+              { name: 'Node.js', logo: '/tech-logos/nodejs.svg', color: 'text-green-400' },
+              { name: 'Express', logo: '/tech-logos/express.svg', color: 'text-gray-400' },
+              { name: 'TypeScript', logo: '/tech-logos/typescript.svg', color: 'text-blue-500' },
+              { name: 'Flutter', logo: '/tech-logos/flutter.svg', color: 'text-blue-300' },
+              { name: 'C++', logo: '/tech-logos/cpp.svg', color: 'text-blue-600' },
+              { name: 'Git', logo: '/tech-logos/git.svg', color: 'text-orange-500' },
+              { name: 'AWS', logo: '/tech-logos/aws.svg', color: 'text-orange-400' },
+              { name: 'Shopify', logo: '/tech-logos/shopify.svg', color: 'text-green-600' },
+              { name: 'Stripe', logo: '/tech-logos/stripe.svg', color: 'text-purple-500' },
+              { name: 'MongoDB', logo: '/tech-logos/mongodb.svg', color: 'text-green-500' },
+              { name: 'PostgreSQL', logo: '/tech-logos/postgresql.svg', color: 'text-blue-700' },
+              { name: 'Prisma', logo: '/tech-logos/prisma.svg', color: 'text-gray-300' },
+              { name: 'UI/UX', logo: '/tech-logos/figma.svg', color: 'text-pink-400' },
+              { name: 'Vercel', logo: '/tech-logos/vercel.svg', color: 'text-black' }
             ].map((tech) => (
               <div key={tech.name} className="cyberpunk-card text-center p-4 group">
-                <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                  {tech.logo}
+                <div className="w-12 h-12 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+                  <Image
+                    src={tech.logo}
+                    alt={`${tech.name} logo`}
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <div className={`text-sm font-semibold font-mono ${tech.color} group-hover:text-cyan-400 transition-colors duration-300`}>
                   {tech.name}

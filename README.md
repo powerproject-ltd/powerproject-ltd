@@ -62,8 +62,8 @@ To transform innovative ideas into powerful software solutions that drive busine
 
 | Frontend | Backend | Database | DevOps | AI/ML |
 |----------|---------|----------|---------|-------|
-| ⚛️ React | 🟢 Node.js | 🍃 MongoDB | 🐳 Docker | 🐍 Python |
-| ▲ Next.js | 🔷 TypeScript | 🐘 PostgreSQL | ⚓ Kubernetes | 🤖 AI Solutions |
+| ⚛️ React | 🟢 Node.js | 🍃 MongoDB |  | 🐍 Python |
+| ▲ Next.js | 🔷 TypeScript |  |  | 🤖 AI Solutions |
 | 🎨 Tailwind | ☁️ AWS | 🔴 Redis | 🚀 CI/CD | 📊 Analytics |
 
 </div>
