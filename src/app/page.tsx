@@ -93,7 +93,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex flex-col">
-                <div className="text-2xl font-bold cyberpunk-text group-hover:scale-105 transition-transform duration-300 relative">
+                <div className="text-2xl font-bold cyberpunk-text group-hover:scale-105 transition-transform duration-300 relative futuristic-font">
                   PowerProject
                 </div>
                 <div className="text-xs text-blue-400/80 font-mono tracking-wider flex items-center space-x-2">
@@ -212,35 +212,47 @@ export default function Home() {
           <div className="text-center">
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="mb-6">
-                <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 mx-auto mb-4">
-                  {/* Outer logo spinning anticlockwise */}
+                <div className="relative w-40 h-40 md:w-64 md:h-64 lg:w-80 lg:h-80 mx-auto mb-4">
+                  {/* Outer logo spinning anticlockwise with glow */}
                   <div className="absolute inset-0 animate-spin-anticlockwise">
-                    <Image 
-                      src="/assets/outerlogo.png" 
-                      alt="PowerProject Outer Logo" 
-                      width={224}
-                      height={224}
-                      className="w-full h-full object-contain"
-                    />
+                    <div className="relative w-full h-full">
+                      {/* Glow layers behind the logo */}
+                      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400/15 via-blue-500/20 to-purple-500/15 rounded-full blur-xl"></div>
+                      <div className="absolute inset-2 w-full h-full bg-gradient-to-r from-cyan-300/12 via-blue-400/16 to-purple-400/12 rounded-full blur-lg"></div>
+                      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400/8 via-blue-500/12 to-purple-500/8 rounded-full blur-xl animate-pulse-glow"></div>
+                      <div className="absolute inset-2 w-full h-full bg-gradient-to-r from-cyan-300/6 via-blue-400/10 to-purple-400/6 rounded-full blur-lg animate-pulse-glow"></div>
+                      <Image 
+                        src="/assets/outerlogo.png" 
+                        alt="PowerProject Outer Logo" 
+                        width={320}
+                        height={320}
+                        className="w-full h-full object-contain relative z-10"
+                      />
+                    </div>
                   </div>
-                  {/* Inner logo spinning clockwise */}
-                  <div className="absolute inset-4 md:inset-6 lg:inset-8 animate-spin-clockwise">
-                    <Image 
-                      src="/assets/innerlogo.png" 
-                      alt="PowerProject Inner Logo" 
-                      width={160}
-                      height={160}
-                      className="w-full h-full object-contain"
-                    />
+                  {/* Inner logo spinning clockwise with glow */}
+                  <div className="absolute inset-6 md:inset-10 lg:inset-12 animate-spin-clockwise">
+                    <div className="relative w-full h-full">
+                      {/* Inner glow layers behind the logo */}
+                      <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-400/10 via-cyan-400/15 to-blue-400/10 rounded-full blur-lg animate-pulse-glow-inner"></div>
+                      <div className="absolute inset-1 w-full h-full bg-gradient-to-r from-emerald-300/8 via-cyan-300/12 to-blue-300/8 rounded-full blur-md"></div>
+                      <Image 
+                        src="/assets/innerlogo.png" 
+                        alt="PowerProject Inner Logo" 
+                        width={200}
+                        height={200}
+                        className="w-full h-full object-contain relative z-10"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 font-mono">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 futuristic-font">
                 <span className="cyberpunk-text animate-neon-flicker">[AI-POWERED]</span>
                 <br />
-                <span className="text-white cyberpunk-glow">SOFTWARE_DEVELOPMENT</span>
+                <span className="text-white cyberpunk-glow futuristic-text">SOFTWARE_DEVELOPMENT</span>
               </h1>
-              <p className="text-lg md:text-xl text-cyan-400/80 mb-6 max-w-2xl mx-auto font-mono">
+              <p className="text-lg md:text-xl text-cyan-400/80 mb-6 max-w-2xl mx-auto futuristic-mono">
                 [SYSTEM_INIT] Transform your ideas into cutting-edge software solutions with our expert team. 
                 [EXECUTE] Get your MVP developed in just 6 weeks with the latest technologies.
               </p>
@@ -307,7 +319,7 @@ export default function Home() {
                 className="h-16 w-auto mx-auto mb-4 logo-img"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-mono">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 futuristic-heading">
               <span className="cyberpunk-text">[OUR_SERVICES]</span>
             </h2>
             <p className="text-xl text-cyan-400/80 max-w-3xl mx-auto font-mono">
@@ -386,7 +398,7 @@ export default function Home() {
                 className="h-20 w-auto mx-auto mb-4 logo-img"
               />
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-mono">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 futuristic-heading">
               <span className="cyberpunk-text">[ABOUT_POWERPROJECT]</span>
             </h2>
             <p className="text-xl text-cyan-400/80 max-w-3xl mx-auto font-mono">
