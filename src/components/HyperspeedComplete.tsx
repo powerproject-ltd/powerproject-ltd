@@ -1,9 +1,12 @@
 import { useEffect, useRef, FC } from 'react';
 import * as THREE from 'three';
-import { BloomEffect, EffectComposer, EffectPass, RenderPass, SMAAEffect, SMAAPreset } from 'postprocessing';
 import './Hyperspeed.css';
 
-const Hyperspeed: FC<{ effectOptions?: any }> = ({ effectOptions = {} }) => {
+interface HyperspeedProps {
+  effectOptions?: Record<string, unknown>;
+}
+
+const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
   const hyperspeed = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,7 +32,7 @@ const Hyperspeed: FC<{ effectOptions?: any }> = ({ effectOptions = {} }) => {
     scene.fog = fog;
 
     // Create road geometry with multiple segments
-    const roadSegments = [];
+    const roadSegments: THREE.Mesh[] = [];
     for (let i = 0; i < 3; i++) {
       const roadGeometry = new THREE.PlaneGeometry(20, 1000);
       const roadMaterial = new THREE.MeshLambertMaterial({ 
@@ -48,7 +51,6 @@ const Hyperspeed: FC<{ effectOptions?: any }> = ({ effectOptions = {} }) => {
     const lineGeometry = new THREE.BufferGeometry();
     const linePositions = [];
     const lineColors = [];
-    const lineWidths = [];
     
     // Create dashed lines
     for (let i = 0; i < 200; i++) {
@@ -90,7 +92,7 @@ const Hyperspeed: FC<{ effectOptions?: any }> = ({ effectOptions = {} }) => {
     scene.add(roadLines);
 
     // Create car lights with better effects
-    const carLights = [];
+    const carLights: THREE.Mesh[] = [];
     const carLightGeometry = new THREE.SphereGeometry(0.2, 8, 8);
     
     for (let i = 0; i < 30; i++) {
@@ -120,7 +122,7 @@ const Hyperspeed: FC<{ effectOptions?: any }> = ({ effectOptions = {} }) => {
     }
 
     // Create side lights with better positioning
-    const sideLights = [];
+    const sideLights: THREE.Mesh[] = [];
     const sideLightGeometry = new THREE.BoxGeometry(0.2, 3, 0.2);
     
     for (let i = 0; i < 100; i++) {
@@ -165,7 +167,7 @@ const Hyperspeed: FC<{ effectOptions?: any }> = ({ effectOptions = {} }) => {
       speed = 5 + Math.sin(time * 0.1) * 2; // Varying speed
       
       // Move road segments
-      roadSegments.forEach((road, index) => {
+      roadSegments.forEach((road) => {
         road.position.z += speed;
         if (road.position.z > 1000) {
           road.position.z = -1000;
@@ -188,11 +190,11 @@ const Hyperspeed: FC<{ effectOptions?: any }> = ({ effectOptions = {} }) => {
         }
         
         // Add some swaying motion
-        light.position.x += Math.sin(time + index) * 0.01;
+        light.position.x += Math.sin(time + index * 0.1) * 0.01;
       });
       
       // Move side lights
-      sideLights.forEach((light, index) => {
+      sideLights.forEach((light) => {
         light.position.z += speed;
         if (light.position.z > 100) {
           light.position.z = -2000;

@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback, memo, Suspense } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { Boxes } from "@/components/ui/background-boxes";
 import dynamic from 'next/dynamic';
 
 // Lazy load the Hyperspeed component for better performance
@@ -49,68 +48,32 @@ export default function Home() {
 
   return (
     <div className="min-h-screen gradient-bg tech-scrollbar">
-      {/* Enhanced Technological Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-primary/20 shadow-2xl" role="navigation" aria-label="Main navigation">
-        {/* Animated background grid */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 opacity-30"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,212,255,0.1),transparent_50%)]"></div>
-        
-        {/* Animated data streams */}
-        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-data-stream"></div>
-        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent animate-data-stream" style={{animationDelay: '1.5s'}}></div>
-        
-        {/* Tech status indicators */}
-        <div className="absolute top-2 right-4 flex items-center space-x-2 text-xs text-primary/60 font-mono">
-          <div className="flex items-center space-x-1">
-            <div className="w-2 h-2 bg-primary rounded-full animate-tech-pulse"></div>
-            <span>ONLINE</span>
-          </div>
-          <div className="flex items-center space-x-1">
-            <div className="w-2 h-2 bg-secondary rounded-full animate-tech-pulse" style={{animationDelay: '1s'}}></div>
-            <span>AI-READY</span>
-          </div>
-        </div>
+      {/* Professional Navigation */}
+      <nav className="fixed top-0 w-full z-50 glass-card border-b border-white/10" role="navigation" aria-label="Main navigation">
+        {/* Subtle background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/50 via-slate-800/30 to-slate-900/50"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="flex justify-between items-center h-20">
-            {/* Logo Section with Cyberpunk Elements */}
+            {/* Professional Logo Section */}
             <div className="flex items-center group">
               <div className="relative">
-                <Image 
-                src="/assets/logobgr.png" 
-                alt="PowerProject Logo" 
-                  width={40}
-                  height={40}
-                  className="h-10 w-auto mr-4 logo-img group-hover:scale-110 transition-all duration-300 relative z-10"
-                />
-                {/* Professional hexagon frame */}
-                <div className="absolute -inset-3 w-16 h-16">
-                  <div className="absolute inset-0 border-2 border-blue-500/40 group-hover:border-blue-500/80 transition-all duration-500 transform rotate-45"></div>
-                  <div className="absolute inset-1 border border-emerald-500/30 group-hover:border-emerald-500/60 transition-all duration-700 transform rotate-45"></div>
-                </div>
-                {/* Professional corner brackets */}
-                <div className="absolute -top-2 -left-2 w-4 h-4 border-l-2 border-t-2 border-blue-500/60 group-hover:border-blue-500 transition-all duration-300"></div>
-                <div className="absolute -top-2 -right-2 w-4 h-4 border-r-2 border-t-2 border-blue-500/60 group-hover:border-blue-500 transition-all duration-300"></div>
-                <div className="absolute -bottom-2 -left-2 w-4 h-4 border-l-2 border-b-2 border-emerald-500/60 group-hover:border-emerald-500 transition-all duration-300"></div>
-                <div className="absolute -bottom-2 -right-2 w-4 h-4 border-r-2 border-b-2 border-emerald-500/60 group-hover:border-emerald-500 transition-all duration-300"></div>
-                {/* Scanning lines */}
-                <div className="absolute inset-0 overflow-hidden">
-                  <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent animate-scan-line"></div>
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent animate-scan-line" style={{animationDelay: '1s'}}></div>
+                <div className="relative p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-cyan-400/30 transition-all duration-300">
+                  <Image 
+                    src="/assets/logobgr.png" 
+                    alt="PowerProject Logo" 
+                    width={40}
+                    height={40}
+                    className="h-10 w-auto"
+                  />
                 </div>
               </div>
-              <div className="flex flex-col">
-                <div className="text-lg sm:text-xl md:text-2xl font-bold cyberpunk-text group-hover:scale-105 transition-transform duration-300 relative futuristic-font">
+              <div className="flex flex-col ml-4">
+                <div className="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
                   PowerProject
                 </div>
-                <div className="text-xs text-blue-400/80 font-mono tracking-wider flex items-center space-x-1 sm:space-x-2">
-                  <span className="cyberpunk-glow hidden sm:inline">[AI-POWERED_SOLUTIONS]</span>
-                  <span className="cyberpunk-glow sm:hidden">[AI-POWERED]</span>
-                  <div className="flex space-x-1">
-                    <div className="w-1 h-1 bg-blue-500 rounded-full animate-cyber-pulse"></div>
-                    <div className="w-1 h-1 bg-emerald-500 rounded-full animate-cyber-pulse" style={{animationDelay: '0.3s'}}></div>
-                    <div className="w-1 h-1 bg-violet-500 rounded-full animate-cyber-pulse" style={{animationDelay: '0.6s'}}></div>
-                  </div>
+                <div className="text-sm text-slate-400 font-medium">
+                  AI-Powered Solutions
                 </div>
               </div>
             </div>
