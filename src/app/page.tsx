@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { getImageKitUrl, IMAGE_PATHS, IMAGE_TRANSFORMATIONS } from '@/lib/imagekit';
 
 // Lazy load the Hyperspeed component for better performance
 const Hyperspeed = dynamic(() => import("@/components/HyperspeedComplete"), {
@@ -59,11 +60,11 @@ export default function Home() {
             <div className="flex items-center group">
               <div className="relative">
                 <div className="relative p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-cyan-400/30 transition-all duration-300">
-                  <Image 
-                    src="/assets/logobgr.png" 
-                    alt="PowerProject Logo" 
-                    width={40}
-                    height={40}
+                <Image 
+                    src={getImageKitUrl(IMAGE_PATHS.logoBgr, 'w-48,h-48,f-auto,q-100')} 
+                alt="PowerProject Logo" 
+                  width={40}
+                  height={40}
                     className="h-10 w-auto"
                   />
                 </div>
@@ -232,14 +233,14 @@ export default function Home() {
                       <div className="absolute inset-2 w-full h-full bg-gradient-to-r from-cyan-300/12 via-blue-400/16 to-purple-400/12 rounded-full blur-lg"></div>
                       <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400/8 via-blue-500/12 to-purple-500/8 rounded-full blur-xl animate-pulse-glow"></div>
                       <div className="absolute inset-2 w-full h-full bg-gradient-to-r from-cyan-300/6 via-blue-400/10 to-purple-400/6 rounded-full blur-lg animate-pulse-glow"></div>
-                                      <Image
-                  src="/assets/outerlogo.png"
+                <Image 
+                  src={getImageKitUrl(IMAGE_PATHS.outerLogo, 'w-320,h-320,f-auto,q-100')}
                   alt="PowerProject Outer Logo - Spinning outer ring representing our dynamic development process"
                   width={320}
                   height={320}
                   className="w-full h-full object-contain relative z-10"
                   priority
-                  quality={90}
+                  quality={100}
                 />
                     </div>
                   </div>
@@ -250,13 +251,13 @@ export default function Home() {
                       <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-400/10 via-cyan-400/15 to-blue-400/10 rounded-full blur-lg animate-pulse-glow-inner"></div>
                       <div className="absolute inset-1 w-full h-full bg-gradient-to-r from-emerald-300/8 via-cyan-300/12 to-blue-300/8 rounded-full blur-md"></div>
                                             <Image
-                        src="/assets/innerlogo.png"
+                        src={getImageKitUrl(IMAGE_PATHS.innerLogo, 'w-256,h-256,f-auto,q-100')}
                         alt="PowerProject Inner Logo - Core technology hub spinning clockwise representing innovation"
-                        width={200}
-                        height={200}
+                        width={256}
+                        height={256}
                         className="w-full h-full object-contain relative z-10"
                         priority
-                        quality={90}
+                        quality={100}
                       />
                     </div>
                   </div>
@@ -331,7 +332,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <div className="mb-6">
               <Image 
-                src="/assets/logobgr.png" 
+                src={getImageKitUrl(IMAGE_PATHS.logoBgr, IMAGE_TRANSFORMATIONS.techLogoSmall)} 
                 alt="PowerProject Logo" 
                 width={64}
                 height={64}
@@ -410,7 +411,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <div className="mb-6">
               <Image 
-                src="/assets/powerproject.png" 
+                src={getImageKitUrl(IMAGE_PATHS.powerProject, 'w-32,h-32,f-auto,q-100')} 
                 alt="PowerProject" 
                 width={80}
                 height={80}
@@ -527,27 +528,27 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
-              { name: 'React', logo: '/tech-logos/react.svg', color: 'text-blue-400' },
-              { name: 'Next.js', logo: '/tech-logos/nextjs.svg', color: 'text-white' },
-              { name: 'Node.js', logo: '/tech-logos/nodejs.svg', color: 'text-green-400' },
-              { name: 'Express', logo: '/tech-logos/express.svg', color: 'text-gray-400' },
-              { name: 'TypeScript', logo: '/tech-logos/typescript.svg', color: 'text-blue-500' },
-              { name: 'Flutter', logo: '/tech-logos/flutter.svg', color: 'text-blue-300' },
-              { name: 'C++', logo: '/tech-logos/cpp.svg', color: 'text-blue-600' },
-              { name: 'Git', logo: '/tech-logos/git.svg', color: 'text-orange-500' },
-              { name: 'AWS', logo: '/tech-logos/aws.svg', color: 'text-orange-400' },
-              { name: 'Shopify', logo: '/tech-logos/shopify.svg', color: 'text-green-600' },
-              { name: 'Stripe', logo: '/tech-logos/stripe.svg', color: 'text-purple-500' },
-              { name: 'MongoDB', logo: '/tech-logos/mongodb.svg', color: 'text-green-500' },
-              { name: 'PostgreSQL', logo: '/tech-logos/postgresql.svg', color: 'text-blue-700' },
-              { name: 'Prisma', logo: '/tech-logos/prisma.svg', color: 'text-gray-300' },
-              { name: 'UI/UX', logo: '/tech-logos/figma.svg', color: 'text-pink-400' },
-              { name: 'Vercel', logo: '/tech-logos/vercel.svg', color: 'text-black' }
+              { name: 'React', logo: IMAGE_PATHS.react, color: 'text-blue-400' },
+              { name: 'Next.js', logo: IMAGE_PATHS.nextjs, color: 'text-white' },
+              { name: 'Node.js', logo: IMAGE_PATHS.nodejs, color: 'text-green-400' },
+              { name: 'Express', logo: IMAGE_PATHS.express, color: 'text-gray-400' },
+              { name: 'TypeScript', logo: IMAGE_PATHS.typescript, color: 'text-blue-500' },
+              { name: 'Flutter', logo: IMAGE_PATHS.flutter, color: 'text-blue-300' },
+              { name: 'C++', logo: IMAGE_PATHS.cpp, color: 'text-blue-600' },
+              { name: 'Git', logo: IMAGE_PATHS.git, color: 'text-orange-500' },
+              { name: 'AWS', logo: IMAGE_PATHS.aws, color: 'text-orange-400' },
+              { name: 'Shopify', logo: IMAGE_PATHS.shopify, color: 'text-green-600' },
+              { name: 'Stripe', logo: IMAGE_PATHS.stripe, color: 'text-purple-500' },
+              { name: 'MongoDB', logo: IMAGE_PATHS.mongodb, color: 'text-green-500' },
+              { name: 'PostgreSQL', logo: IMAGE_PATHS.postgresql, color: 'text-blue-700' },
+              { name: 'Prisma', logo: IMAGE_PATHS.prisma, color: 'text-gray-300' },
+              { name: 'UI/UX', logo: IMAGE_PATHS.figma, color: 'text-pink-400' },
+              { name: 'Vercel', logo: IMAGE_PATHS.vercel, color: 'text-black' }
             ].map((tech) => (
               <div key={tech.name} className="cyberpunk-card text-center p-4 group">
                 <div className="w-12 h-12 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
                   <Image
-                    src={tech.logo}
+                    src={getImageKitUrl(tech.logo, 'w-32,h-32,f-auto,q-100')}
                     alt={`${tech.name} technology logo`}
                     width={48}
                     height={48}
@@ -665,7 +666,7 @@ export default function Home() {
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
               <Image 
-                src="/assets/logo.jpeg" 
+                src={getImageKitUrl(IMAGE_PATHS.logoBgr, IMAGE_TRANSFORMATIONS.techLogoSmall)} 
                 alt="PowerProject Logo" 
                 width={48}
                 height={48}

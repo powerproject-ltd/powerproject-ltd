@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: 'PowerProject',
     images: [
       {
-        url: '/assets/powerproject.png',
+        url: 'https://ik.imagekit.io/meaas6nsi/public/assets/powerproject.png',
         width: 1200,
         height: 630,
         alt: 'PowerProject - AI-Powered Software Development',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: "PowerProject - AI-Powered Software Development",
     description: "Transform your ideas into cutting-edge software solutions. Get your MVP developed in just 6 weeks.",
-    images: ['/assets/powerproject.png'],
+    images: ['https://ik.imagekit.io/meaas6nsi/public/assets/powerproject.png'],
     creator: '@powerproject',
   },
   robots: {
@@ -80,7 +80,7 @@ export default function RootLayout({
     "name": "PowerProject",
     "description": "AI-Powered Software Development Company specializing in MVP development",
     "url": "https://powerproject.dev",
-    "logo": "https://powerproject.dev/assets/powerproject.png",
+    "logo": "https://ik.imagekit.io/meaas6nsi/public/assets/powerproject.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "customer service",
@@ -108,7 +108,7 @@ export default function RootLayout({
           rel="stylesheet" 
         />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/assets/powerproject.png" />
+        <link rel="apple-touch-icon" href="https://ik.imagekit.io/meaas6nsi/assets/powerproject.png" />
         <meta name="theme-color" content="#000000" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <script

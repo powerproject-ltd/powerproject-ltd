@@ -15,6 +15,7 @@
     "clsx": "^2.1.1",
     "critters": "^0.0.23",
     "framer-motion": "^12.23.12",
+    "imagekitio-react": "^4.3.0",
     "lucide-react": "^0.542.0",
     "next": "15.5.2",
     "postprocessing": "^6.37.7",
