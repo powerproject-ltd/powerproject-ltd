@@ -23,10 +23,15 @@ export const IMAGE_TRANSFORMATIONS = {
   techLogo: 'w-48,h-48,f-auto,q-100',
   techLogoSmall: 'w-32,h-32,f-auto,q-100',
   
-  // General image transformations
-  thumbnail: 'w-200,h-200,f-auto,q-95',
-  medium: 'w-400,h-400,f-auto,q-95',
-  large: 'w-800,h-600,f-auto,q-95',
+  // Team member transformations - Maximum quality for sharp, HD photos
+  teamMember: 'w-200,h-200,f-auto,q-100,c-fill',
+  teamMemberSmall: 'w-144,h-144,f-auto,q-100,c-fill',
+  teamMemberLarge: 'w-300,h-300,f-auto,q-100,c-fill',
+  
+  // General image transformations - Maximum quality for sharp, HD photos
+  thumbnail: 'w-200,h-200,f-auto,q-100',
+  medium: 'w-400,h-400,f-auto,q-100',
+  large: 'w-800,h-600,f-auto,q-100',
   
   // WebP format for better performance
   webp: 'f-webp,q-100',
@@ -40,6 +45,9 @@ export const IMAGE_PATHS = {
   innerLogo: 'public/assets/innerlogo.png',
   logoBgr: 'public/assets/logobgr.png',
   powerProject: 'public/assets/powerproject.png',
+  
+  // Team members
+  ubaidAhmed: 'public/Tmembers/Ubaid-Ahmed.jfif',
   
   // Tech logos
   react: 'public/tech-logos/react.svg',

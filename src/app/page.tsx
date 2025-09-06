@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { getImageKitUrl, IMAGE_PATHS, IMAGE_TRANSFORMATIONS } from '@/lib/imagekit';
+import { getImageKitUrl, IMAGE_PATHS } from '@/lib/imagekit';
+import TeamMemberCard from '@/components/TeamMemberCard';
 
 // Lazy load the Hyperspeed component for better performance
 const Hyperspeed = dynamic(() => import("@/components/HyperspeedComplete"), {
@@ -14,6 +15,7 @@ const Hyperspeed = dynamic(() => import("@/components/HyperspeedComplete"), {
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,6 +24,28 @@ export default function Home() {
 
   useEffect(() => {
     setIsVisible(true);
+  }, []);
+
+  // Scroll detection for active section highlighting
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'services', 'about', 'team', 'projects', 'contact'];
+      const scrollPosition = window.scrollY + 100; // Offset for better detection
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = useCallback((sectionId: string) => {
@@ -58,22 +82,47 @@ export default function Home() {
           <div className="flex justify-between items-center h-20">
             {/* Professional Logo Section */}
             <div className="flex items-center group">
-              <div className="relative">
-                <div className="relative p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-cyan-400/30 transition-all duration-300">
-                <Image 
-                    src={getImageKitUrl(IMAGE_PATHS.logoBgr, 'w-48,h-48,f-auto,q-100')} 
-                alt="PowerProject Logo" 
-                  width={40}
-                  height={40}
-                    className="h-10 w-auto"
-                  />
+              <div className="relative w-16 h-16">
+                {/* Outer logo spinning anticlockwise with glow */}
+                <div className="absolute inset-0 animate-spin-anticlockwise">
+                  <div className="relative w-full h-full">
+                    {/* Glow layers behind the logo */}
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400/10 via-blue-500/15 to-purple-500/10 rounded-full blur-sm"></div>
+                    <div className="absolute inset-1 w-full h-full bg-gradient-to-r from-cyan-300/8 via-blue-400/12 to-purple-400/8 rounded-full blur-sm"></div>
+                    <Image 
+                      src={getImageKitUrl(IMAGE_PATHS.outerLogo, 'w-64,h-64,f-auto,q-100')}
+                      alt="PowerProject Outer Logo"
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-contain relative z-10"
+                      priority
+                      quality={100}
+                    />
+                  </div>
+                </div>
+                {/* Inner logo spinning clockwise with glow */}
+                <div className="absolute inset-2 animate-spin-clockwise">
+                  <div className="relative w-full h-full">
+                    {/* Inner glow layers behind the logo */}
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-400/8 via-cyan-400/12 to-blue-400/8 rounded-full blur-sm"></div>
+                    <div className="absolute inset-1 w-full h-full bg-gradient-to-r from-emerald-300/6 via-cyan-300/10 to-blue-300/6 rounded-full blur-sm"></div>
+                    <Image
+                      src={getImageKitUrl(IMAGE_PATHS.innerLogo, 'w-48,h-48,f-auto,q-100')}
+                      alt="PowerProject Inner Logo"
+                      width={48}
+                      height={48}
+                      className="w-full h-full object-contain relative z-10"
+                      priority
+                      quality={100}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="flex flex-col ml-4">
                 <div className="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
                   PowerProject
                 </div>
-                <div className="text-sm text-slate-400 font-medium">
+                <div className="text-sm text-cyan-400/80 font-medium">
                   AI-Powered Solutions
                 </div>
               </div>
@@ -82,15 +131,21 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-2">
               {[
+                { name: 'HOME', id: 'home', icon: '🏠', code: 'HOM' },
                 { name: 'SERVICES', id: 'services', icon: '⚡', code: 'SVC' },
                 { name: 'ABOUT', id: 'about', icon: '🔧', code: 'ABT' },
+                { name: 'TEAM', id: 'team', icon: '👥', code: 'TAM' },
                 { name: 'PROJECTS', id: 'projects', icon: '🚀', code: 'PRJ' },
                 { name: 'CONTACT', id: 'contact', icon: '📡', code: 'CNT' }
               ].map((item) => (
                 <button 
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
-                  className="group relative px-4 py-3 text-gray-300 hover:text-blue-400 transition-all duration-300 hover:bg-blue-400/5 border border-transparent hover:border-blue-400/30 cyberpunk-nav-item"
+                  className={`group relative px-4 py-3 transition-all duration-300 cyberpunk-nav-item ${
+                    activeSection === item.id 
+                      ? 'text-cyan-400 bg-cyan-400/10 border-cyan-400/50' 
+                      : 'text-gray-300 hover:text-blue-400 hover:bg-blue-400/5 border-transparent hover:border-blue-400/30'
+                  }`}
                 >
                   <span className="flex items-center space-x-2">
                     <span className="text-sm group-hover:scale-110 transition-transform duration-300 text-blue-500">
@@ -141,8 +196,10 @@ export default function Home() {
           <div className={`lg:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-blue-500/20 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
             <div className="px-4 py-6 space-y-4">
               {[
+                { name: 'HOME', id: 'home', icon: '🏠', desc: 'Back to Top', code: 'HOM' },
                 { name: 'SERVICES', id: 'services', icon: '⚡', desc: 'Our Solutions', code: 'SVC' },
                 { name: 'ABOUT', id: 'about', icon: '🔧', desc: 'Who We Are', code: 'ABT' },
+                { name: 'TEAM', id: 'team', icon: '👥', desc: 'Meet Our Team', code: 'TAM' },
                 { name: 'PROJECTS', id: 'projects', icon: '🚀', desc: 'Our Work', code: 'PRJ' },
                 { name: 'CONTACT', id: 'contact', icon: '📡', desc: 'Get In Touch', code: 'CNT' }
               ].map((item) => (
@@ -152,7 +209,11 @@ export default function Home() {
                     scrollToSection(item.id);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full flex items-center space-x-4 p-3 text-gray-300 hover:text-blue-400 hover:bg-blue-400/5 border border-transparent hover:border-blue-400/30 transition-all duration-300 group cyberpunk-mobile-item"
+                  className={`w-full flex items-center space-x-4 p-3 transition-all duration-300 group cyberpunk-mobile-item ${
+                    activeSection === item.id 
+                      ? 'text-cyan-400 bg-cyan-400/10 border-cyan-400/50' 
+                      : 'text-gray-300 hover:text-blue-400 hover:bg-blue-400/5 border-transparent hover:border-blue-400/30'
+                  }`}
                 >
                   <span className="text-xl group-hover:scale-110 transition-transform duration-300 text-blue-500">
                     {item.icon}
@@ -332,11 +393,11 @@ export default function Home() {
           <div className="text-center mb-16">
             <div className="mb-6">
               <Image 
-                src={getImageKitUrl(IMAGE_PATHS.logoBgr, IMAGE_TRANSFORMATIONS.techLogoSmall)} 
+                src={getImageKitUrl(IMAGE_PATHS.logoBgr, 'w-80,h-80,f-auto,q-100')} 
                 alt="PowerProject Logo" 
-                width={64}
-                height={64}
-                className="h-16 w-auto mx-auto mb-4 logo-img"
+                width={80}
+                height={80}
+                className="h-20 w-auto mx-auto mb-4 logo-img"
               />
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
@@ -411,11 +472,11 @@ export default function Home() {
           <div className="text-center mb-16">
             <div className="mb-6">
               <Image 
-                src={getImageKitUrl(IMAGE_PATHS.powerProject, 'w-32,h-32,f-auto,q-100')} 
+                src={getImageKitUrl(IMAGE_PATHS.powerProject, 'w-96,h-96,f-auto,q-100')} 
                 alt="PowerProject" 
-                width={80}
-                height={80}
-                className="h-20 w-auto mx-auto mb-4 logo-img"
+                width={96}
+                height={96}
+                className="h-24 w-auto mx-auto mb-4 logo-img"
               />
             </div>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
@@ -444,6 +505,97 @@ export default function Home() {
                 <div className="text-xl text-cyan-400 mb-2 font-mono">YEARS_EXPERIENCE</div>
                 <div className="text-pink-400/60 font-mono">[STATUS: DELIVERING] Excellence in software development</div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section id="team" className="py-20 relative overflow-hidden" aria-label="Team section">
+        {/* Professional background pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-800/30 to-slate-900/50"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,245,255,0.05)_0%,transparent_50%)]"></div>
+        
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="mb-6">
+              <Image 
+                src={getImageKitUrl(IMAGE_PATHS.powerProject, 'w-96,h-96,f-auto,q-100')} 
+                alt="PowerProject" 
+                width={96}
+                height={96}
+                className="h-24 w-auto mx-auto mb-4 logo-img"
+              />
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
+              <span className="cyberpunk-text">[MEET_OUR_TEAM]</span>
+            </h2>
+            <p className="text-xl text-cyan-400/80 max-w-3xl mx-auto font-mono">
+              [STATUS: ACTIVE] The brilliant minds behind PowerProject, dedicated to transforming your ideas into reality.
+            </p>
+          </div>
+
+          {/* Team Members Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {/* Team Member Card */}
+            <div className="flex justify-center">
+              <TeamMemberCard
+                name="Ubaid Ahmed"
+                role="Lead Developer & Founder"
+                portfolio="https://botportfolio.netlify.app"
+                imagePath={IMAGE_PATHS.ubaidAhmed}
+                className="transform hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            
+            {/* Placeholder for future team members */}
+            <div className="flex justify-center">
+              <div className="relative group cursor-pointer">
+                <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-52 lg:h-52 rounded-full overflow-hidden border-2 border-slate-600/30 group-hover:border-cyan-400/50 transition-all duration-300 bg-slate-800/50 flex items-center justify-center">
+                  <div className="text-slate-400 group-hover:text-cyan-400 transition-colors duration-300">
+                    <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="text-center mt-4">
+                  <div className="text-slate-400 font-medium">Coming Soon</div>
+                  <div className="text-sm text-slate-500">New Team Member</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Team Values */}
+          <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-6 glass-card rounded-2xl">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Innovation</h3>
+              <p className="text-slate-300">We push boundaries and explore cutting-edge technologies to deliver exceptional solutions.</p>
+            </div>
+
+            <div className="text-center p-6 glass-card rounded-2xl">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Collaboration</h3>
+              <p className="text-slate-300">We work closely with our clients to understand their vision and bring it to life.</p>
+            </div>
+
+            <div className="text-center p-6 glass-card rounded-2xl">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Excellence</h3>
+              <p className="text-slate-300">We are committed to delivering high-quality solutions that exceed expectations.</p>
             </div>
           </div>
         </div>
@@ -666,11 +818,11 @@ export default function Home() {
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
               <Image 
-                src={getImageKitUrl(IMAGE_PATHS.logoBgr, IMAGE_TRANSFORMATIONS.techLogoSmall)} 
+                src={getImageKitUrl(IMAGE_PATHS.logoBgr, 'w-64,h-64,f-auto,q-100')} 
                 alt="PowerProject Logo" 
-                width={48}
-                height={48}
-                className="h-12 w-auto mr-3 logo-img"
+                width={64}
+                height={64}
+                className="h-16 w-auto mr-3 logo-img"
               />
               <div className="text-2xl font-bold cyberpunk-text font-mono">PowerProject</div>
             </div>
