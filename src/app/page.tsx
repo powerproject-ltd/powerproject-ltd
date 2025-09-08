@@ -541,7 +541,7 @@ export default function Home() {
             <div className="flex justify-center">
               <TeamMemberCard
                 name="Ubaid Ahmed"
-                role="Lead Developer & Founder"
+                role="Lead Developer & Software Engineer"
                 portfolio="https://botportfolio.netlify.app"
                 imagePath={IMAGE_PATHS.ubaidAhmed}
                 className="transform hover:scale-105 transition-transform duration-300"
@@ -616,13 +616,52 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="cyberpunk-card">
+            {/* FitFlex - Fitness Mobile App */}
+            <div className="cyberpunk-card group">
+              <div className="w-full h-48 bg-gradient-to-br from-emerald-400/20 to-cyan-400/20 rounded-lg mb-4 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(0,212,170,0.1)_50%,transparent_70%)]"></div>
+                <div className="absolute top-2 left-2 text-emerald-400 font-mono text-xs">[FITNESS]</div>
+                <div className="absolute bottom-2 right-2 text-cyan-400 font-mono text-xs">[FLUTTER]</div>
+                {/* Fitness icon overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">💪</div>
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-2 font-mono text-emerald-400">[FITFLEX_MOBILE_APP]</h3>
+              <p className="text-gray-300 text-sm mb-4 font-mono">[EXECUTE] Dynamic Flutter fitness app with workout plans, diet suggestions, and equipment guidance</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-2 py-1 bg-emerald-400/20 text-emerald-400 text-xs font-mono rounded">Flutter</span>
+                <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs font-mono rounded">Firebase</span>
+                <span className="px-2 py-1 bg-blue-400/20 text-blue-400 text-xs font-mono rounded">Mobile</span>
+              </div>
+              <a 
+                href="https://github.com/LabridTech/FitFlex" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-emerald-400 hover:text-emerald-300 transition-colors cursor-pointer text-sm font-mono cyberpunk-glow inline-flex items-center gap-2"
+              >
+                [VIEW_CODE] →
+              </a>
+            </div>
+
+            {/* E-Commerce Platform */}
+            <div className="cyberpunk-card group">
               <div className="w-full h-48 bg-gradient-to-br from-cyan-400/20 to-pink-400/20 rounded-lg mb-4 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(0,255,255,0.1)_50%,transparent_70%)]"></div>
                 <div className="absolute top-2 left-2 text-cyan-400 font-mono text-xs">[E-COMMERCE]</div>
+                <div className="absolute bottom-2 right-2 text-pink-400 font-mono text-xs">[WEB]</div>
+                {/* E-commerce icon overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">🛒</div>
+                </div>
               </div>
               <h3 className="text-xl font-bold mb-2 font-mono text-cyan-400">[E-COMMERCE_PLATFORM]</h3>
-              <p className="text-gray-300 text-sm mb-4 font-mono">[EXECUTE] Full-stack e-commerce solution with advanced features</p>
+              <p className="text-gray-300 text-sm mb-4 font-mono">[EXECUTE] Full-stack e-commerce solution with advanced features and payment integration</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs font-mono rounded">React</span>
+                <span className="px-2 py-1 bg-blue-400/20 text-blue-400 text-xs font-mono rounded">Node.js</span>
+                <span className="px-2 py-1 bg-green-400/20 text-green-400 text-xs font-mono rounded">MongoDB</span>
+              </div>
               <button 
                 onClick={() => scrollToSection('contact')} 
                 className="text-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer text-sm font-mono cyberpunk-glow"
@@ -630,27 +669,25 @@ export default function Home() {
                 [VIEW_DETAILS] →
               </button>
             </div>
-            <div className="cyberpunk-card">
-              <div className="w-full h-48 bg-gradient-to-br from-pink-400/20 to-purple-400/20 rounded-lg mb-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(255,0,128,0.1)_50%,transparent_70%)]"></div>
-                <div className="absolute top-2 left-2 text-pink-400 font-mono text-xs">[BANKING]</div>
-              </div>
-              <h3 className="text-xl font-bold mb-2 font-mono text-pink-400">[MOBILE_BANKING_APP]</h3>
-              <p className="text-gray-300 text-sm mb-4 font-mono">[EXECUTE] Secure mobile banking application with real-time features</p>
-              <button 
-                onClick={() => scrollToSection('contact')} 
-                className="text-pink-400 hover:text-pink-300 transition-colors cursor-pointer text-sm font-mono cyberpunk-glow"
-              >
-                [VIEW_DETAILS] →
-              </button>
-            </div>
-            <div className="cyberpunk-card">
+
+            {/* AI Analytics Dashboard */}
+            <div className="cyberpunk-card group">
               <div className="w-full h-48 bg-gradient-to-br from-purple-400/20 to-cyan-400/20 rounded-lg mb-4 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(128,0,255,0.1)_50%,transparent_70%)]"></div>
                 <div className="absolute top-2 left-2 text-purple-400 font-mono text-xs">[AI_ANALYTICS]</div>
+                <div className="absolute bottom-2 right-2 text-cyan-400 font-mono text-xs">[AI]</div>
+                {/* AI icon overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">🤖</div>
+                </div>
               </div>
               <h3 className="text-xl font-bold mb-2 font-mono text-purple-400">[AI_ANALYTICS_DASHBOARD]</h3>
-              <p className="text-gray-300 text-sm mb-4 font-mono">[EXECUTE] Intelligent analytics platform with machine learning</p>
+              <p className="text-gray-300 text-sm mb-4 font-mono">[EXECUTE] Intelligent analytics platform with machine learning and real-time insights</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="px-2 py-1 bg-purple-400/20 text-purple-400 text-xs font-mono rounded">Python</span>
+                <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs font-mono rounded">TensorFlow</span>
+                <span className="px-2 py-1 bg-blue-400/20 text-blue-400 text-xs font-mono rounded">React</span>
+              </div>
               <button 
                 onClick={() => scrollToSection('contact')} 
                 className="text-purple-400 hover:text-purple-300 transition-colors cursor-pointer text-sm font-mono cyberpunk-glow"
