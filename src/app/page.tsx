@@ -82,36 +82,36 @@ export default function Home() {
           <div className="flex justify-between items-center h-20">
             {/* Professional Logo Section */}
             <div className="flex items-center group">
-              <div className="relative w-16 h-16">
+              <div className="relative w-12 h-12">
                 {/* Outer logo spinning anticlockwise with glow */}
                 <div className="absolute inset-0 animate-spin-anticlockwise">
                   <div className="relative w-full h-full">
                     {/* Glow layers behind the logo */}
-                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400/10 via-blue-500/15 to-purple-500/10 rounded-full blur-sm"></div>
-                    <div className="absolute inset-1 w-full h-full bg-gradient-to-r from-cyan-300/8 via-blue-400/12 to-purple-400/8 rounded-full blur-sm"></div>
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-400/10 via-blue-500/15 to-purple-500/10 rounded-lg blur-sm"></div>
+                    <div className="absolute inset-1 w-full h-full bg-gradient-to-r from-cyan-300/8 via-blue-400/12 to-purple-400/8 rounded-lg blur-sm"></div>
                     <Image 
-                      src={getImageKitUrl(IMAGE_PATHS.outerLogo, 'w-64,h-64,f-auto,q-100')}
+                      src={getImageKitUrl(IMAGE_PATHS.outerLogo, 'w-48,h-48,f-auto,q-100')}
                       alt="PowerProject Outer Logo"
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-contain relative z-10"
+                      width={48}
+                      height={48}
+                      className="w-full h-full object-contain relative z-10 rounded-lg"
                       priority
                       quality={100}
                     />
                   </div>
                 </div>
                 {/* Inner logo spinning clockwise with glow */}
-                <div className="absolute inset-2 animate-spin-clockwise">
+                <div className="absolute inset-1.5 animate-spin-clockwise">
                   <div className="relative w-full h-full">
                     {/* Inner glow layers behind the logo */}
-                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-400/8 via-cyan-400/12 to-blue-400/8 rounded-full blur-sm"></div>
-                    <div className="absolute inset-1 w-full h-full bg-gradient-to-r from-emerald-300/6 via-cyan-300/10 to-blue-300/6 rounded-full blur-sm"></div>
+                    <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-400/8 via-cyan-400/12 to-blue-400/8 rounded-lg blur-sm"></div>
+                    <div className="absolute inset-1 w-full h-full bg-gradient-to-r from-emerald-300/6 via-cyan-300/10 to-blue-300/6 rounded-lg blur-sm"></div>
                     <Image
-                      src={getImageKitUrl(IMAGE_PATHS.innerLogo, 'w-48,h-48,f-auto,q-100')}
+                      src={getImageKitUrl(IMAGE_PATHS.innerLogo, 'w-36,h-36,f-auto,q-100')}
                       alt="PowerProject Inner Logo"
-                      width={48}
-                      height={48}
-                      className="w-full h-full object-contain relative z-10"
+                      width={36}
+                      height={36}
+                      className="w-full h-full object-contain relative z-10 rounded-lg"
                       priority
                       quality={100}
                     />
@@ -129,7 +129,7 @@ export default function Home() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-2">
+            <div className="hidden lg:flex items-center space-x-1">
               {[
                 { name: 'HOME', id: 'home', icon: '🏠', code: 'HOM' },
                 { name: 'SERVICES', id: 'services', icon: '⚡', code: 'SVC' },
@@ -141,22 +141,22 @@ export default function Home() {
                 <button 
                   key={item.name}
                   onClick={() => scrollToSection(item.id)}
-                  className={`group relative px-4 py-3 transition-all duration-300 cyberpunk-nav-item ${
+                  className={`group relative px-2 py-2 transition-all duration-300 cyberpunk-nav-item ${
                     activeSection === item.id 
-                      ? 'text-cyan-400 bg-cyan-400/10 border-cyan-400/50' 
+                      ? 'text-blue-400 bg-blue-400/10 border-blue-400/50' 
                       : 'text-gray-300 hover:text-blue-400 hover:bg-blue-400/5 border-transparent hover:border-blue-400/30'
                   }`}
                 >
-                  <span className="flex items-center space-x-2">
-                    <span className="text-sm group-hover:scale-110 transition-transform duration-300 text-blue-500">
+                  <span className="flex items-center space-x-1">
+                    <span className="text-xs group-hover:scale-110 transition-transform duration-300 text-blue-500">
                       {item.icon}
                     </span>
-                    <span className="font-mono text-sm font-medium">{item.name}</span>
-                    <span className="text-xs text-emerald-400/60 font-mono">[{item.code}]</span>
+                    <span className="font-mono text-xs font-medium">{item.name}</span>
+                    <span className="text-xs text-slate-400/60 font-mono">[{item.code}]</span>
                   </span>
                   {/* Professional hover effect */}
                   <div className="absolute inset-0 border border-blue-500/20 group-hover:border-blue-500/60 transition-all duration-300"></div>
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 group-hover:w-full transition-all duration-300"></div>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:w-full transition-all duration-300"></div>
                 </button>
               ))}
             </div>
@@ -194,7 +194,7 @@ export default function Home() {
 
           {/* Mobile Menu */}
           <div className={`lg:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-t border-blue-500/20 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-            <div className="px-4 py-6 space-y-4">
+            <div className="px-4 py-4 space-y-2">
               {[
                 { name: 'HOME', id: 'home', icon: '🏠', desc: 'Back to Top', code: 'HOM' },
                 { name: 'SERVICES', id: 'services', icon: '⚡', desc: 'Our Solutions', code: 'SVC' },
@@ -209,18 +209,18 @@ export default function Home() {
                     scrollToSection(item.id);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`w-full flex items-center space-x-4 p-3 transition-all duration-300 group cyberpunk-mobile-item ${
+                  className={`w-full flex items-center space-x-3 p-2 transition-all duration-300 group cyberpunk-mobile-item ${
                     activeSection === item.id 
-                      ? 'text-cyan-400 bg-cyan-400/10 border-cyan-400/50' 
+                      ? 'text-blue-400 bg-blue-400/10 border-blue-400/50' 
                       : 'text-gray-300 hover:text-blue-400 hover:bg-blue-400/5 border-transparent hover:border-blue-400/30'
                   }`}
                 >
-                  <span className="text-xl group-hover:scale-110 transition-transform duration-300 text-blue-500">
+                  <span className="text-lg group-hover:scale-110 transition-transform duration-300 text-blue-500">
                     {item.icon}
                   </span>
                   <div className="flex-1 text-left">
-                    <div className="font-mono font-medium">{item.name}</div>
-                    <div className="text-sm text-emerald-400/60 font-mono">[{item.code}] {item.desc}</div>
+                    <div className="font-mono font-medium text-sm">{item.name}</div>
+                    <div className="text-xs text-slate-400/60 font-mono">[{item.code}] {item.desc}</div>
                   </div>
                   <span className="group-hover:translate-x-1 transition-transform duration-300 text-blue-500">→</span>
                 </button>
@@ -325,7 +325,7 @@ export default function Home() {
                 </div>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl professional-heading mb-6 px-4">
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 bg-clip-text text-transparent">
                   AI-Powered
                 </span>
                 <br />
@@ -340,13 +340,13 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button 
                   onClick={() => scrollToSection('contact')} 
-                  className="glass-card glass-card-hover px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 w-full sm:w-auto"
+                  className="glass-card glass-card-hover px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 transition-all duration-300 w-full sm:w-auto"
                 >
                   Get Started
                 </button>
                 <button 
                   onClick={() => scrollToSection('about')}
-                  className="glass-card glass-card-hover px-8 py-4 rounded-xl font-semibold text-cyan-400 border border-cyan-400/30 hover:border-cyan-400/60 hover:bg-cyan-400/10 transition-all duration-300 w-full sm:w-auto"
+                  className="glass-card glass-card-hover px-8 py-4 rounded-xl font-semibold text-blue-400 border border-blue-400/30 hover:border-blue-400/60 hover:bg-blue-400/10 transition-all duration-300 w-full sm:w-auto"
                 >
                   Learn More
                 </button>
@@ -366,18 +366,18 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="cyberpunk-card text-center">
               <div className="text-4xl font-bold cyberpunk-text mb-2 font-mono">[300+]</div>
-              <div className="text-cyan-400 font-mono">SUCCESSFUL_PROJECTS</div>
-              <div className="text-sm text-pink-400/60 mt-2 font-mono">[STATUS: DELIVERED] Exceptional results for our clients</div>
+              <div className="text-blue-400 font-mono">SUCCESSFUL_PROJECTS</div>
+              <div className="text-sm text-slate-400/60 mt-2 font-mono">[STATUS: DELIVERED] Exceptional results for our clients</div>
             </div>
             <div className="cyberpunk-card text-center">
               <div className="text-4xl font-bold cyberpunk-text mb-2 font-mono">[8+]</div>
-              <div className="text-cyan-400 font-mono">YEARS_ACTIVE</div>
-              <div className="text-sm text-pink-400/60 mt-2 font-mono">[STATUS: PROVEN] Track record of excellence</div>
+              <div className="text-blue-400 font-mono">YEARS_ACTIVE</div>
+              <div className="text-sm text-slate-400/60 mt-2 font-mono">[STATUS: PROVEN] Track record of excellence</div>
             </div>
             <div className="cyberpunk-card text-center">
               <div className="text-4xl font-bold cyberpunk-text mb-2 font-mono">[100+]</div>
-              <div className="text-cyan-400 font-mono">EXPERT_DEVELOPERS</div>
-              <div className="text-sm text-pink-400/60 mt-2 font-mono">[STATUS: ONLINE] Top-tier talent across all technologies</div>
+              <div className="text-blue-400 font-mono">EXPERT_DEVELOPERS</div>
+              <div className="text-sm text-slate-400/60 mt-2 font-mono">[STATUS: ONLINE] Top-tier talent across all technologies</div>
             </div>
           </div>
         </div>
@@ -403,20 +403,37 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[OUR_SERVICES]</span>
             </h2>
-            <p className="text-xl text-cyan-400/80 max-w-3xl mx-auto font-mono">
+            <p className="text-xl text-blue-400/80 max-w-3xl mx-auto font-mono">
               [SYSTEM_READY] Comprehensive software development solutions tailored to your business needs
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="cyberpunk-card">
-              <div className="w-16 h-16 bg-cyan-400/20 rounded-lg flex items-center justify-center mb-6 relative">
-                <div className="w-8 h-8 bg-cyan-400 rounded animate-cyber-pulse"></div>
-                <div className="absolute inset-0 border border-cyan-400/30 rounded-lg animate-spin-slow"></div>
+              <div className="w-16 h-16 bg-blue-400/20 rounded-lg flex items-center justify-center mb-6 relative">
+                <div className="w-8 h-8 bg-blue-400 rounded animate-cyber-pulse"></div>
+                <div className="absolute inset-0 border border-blue-400/30 rounded-lg animate-spin-slow"></div>
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-mono text-cyan-400">[CUSTOM_DEV]</h3>
+              <h3 className="text-2xl font-bold mb-4 font-mono text-blue-400">[CUSTOM_DEV]</h3>
               <p className="text-gray-300 mb-6 font-mono">
                 [EXECUTE] Tailored software solutions built with cutting-edge technologies to meet your specific business requirements.
+              </p>
+              <button 
+                onClick={() => scrollToSection('contact')} 
+                className="text-blue-400 hover:text-blue-300 transition-colors cursor-pointer font-mono cyberpunk-glow"
+              >
+                [LEARN_MORE] →
+              </button>
+            </div>
+
+            <div className="cyberpunk-card">
+              <div className="w-16 h-16 bg-cyan-400/20 rounded-lg flex items-center justify-center mb-6 relative">
+                <div className="w-8 h-8 bg-cyan-400 rounded animate-cyber-pulse"></div>
+                <div className="absolute inset-0 border border-cyan-400/30 rounded-lg animate-spin-reverse"></div>
+              </div>
+              <h3 className="text-2xl font-bold mb-4 font-mono text-cyan-400">[MOBILE_APPS]</h3>
+              <p className="text-gray-300 mb-6 font-mono">
+                [EXECUTE] Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.
               </p>
               <button 
                 onClick={() => scrollToSection('contact')} 
@@ -427,34 +444,17 @@ export default function Home() {
             </div>
 
             <div className="cyberpunk-card">
-              <div className="w-16 h-16 bg-pink-400/20 rounded-lg flex items-center justify-center mb-6 relative">
-                <div className="w-8 h-8 bg-pink-400 rounded animate-cyber-pulse"></div>
-                <div className="absolute inset-0 border border-pink-400/30 rounded-lg animate-spin-reverse"></div>
+              <div className="w-16 h-16 bg-violet-400/20 rounded-lg flex items-center justify-center mb-6 relative">
+                <div className="w-8 h-8 bg-violet-400 rounded animate-cyber-pulse"></div>
+                <div className="absolute inset-0 border border-violet-400/30 rounded-lg animate-spin-slow"></div>
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-mono text-pink-400">[MOBILE_APPS]</h3>
-              <p className="text-gray-300 mb-6 font-mono">
-                [EXECUTE] Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.
-              </p>
-              <button 
-                onClick={() => scrollToSection('contact')} 
-                className="text-pink-400 hover:text-pink-300 transition-colors cursor-pointer font-mono cyberpunk-glow"
-              >
-                [LEARN_MORE] →
-              </button>
-            </div>
-
-            <div className="cyberpunk-card">
-              <div className="w-16 h-16 bg-purple-400/20 rounded-lg flex items-center justify-center mb-6 relative">
-                <div className="w-8 h-8 bg-purple-400 rounded animate-cyber-pulse"></div>
-                <div className="absolute inset-0 border border-purple-400/30 rounded-lg animate-spin-slow"></div>
-              </div>
-              <h3 className="text-2xl font-bold mb-4 font-mono text-purple-400">[AI_SOLUTIONS]</h3>
+              <h3 className="text-2xl font-bold mb-4 font-mono text-violet-400">[AI_SOLUTIONS]</h3>
               <p className="text-gray-300 mb-6 font-mono">
                 [EXECUTE] Intelligent automation and AI-powered solutions to streamline your business processes and boost efficiency.
               </p>
               <button 
                 onClick={() => scrollToSection('contact')} 
-                className="text-purple-400 hover:text-purple-300 transition-colors cursor-pointer font-mono cyberpunk-glow"
+                className="text-violet-400 hover:text-violet-300 transition-colors cursor-pointer font-mono cyberpunk-glow"
               >
                 [LEARN_MORE] →
               </button>
@@ -482,13 +482,13 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[ABOUT_POWERPROJECT]</span>
             </h2>
-            <p className="text-xl text-cyan-400/80 max-w-3xl mx-auto font-mono">
+            <p className="text-xl text-blue-400/80 max-w-3xl mx-auto font-mono">
               [STATUS: ACTIVE] We are a leading software development company with over 8 years of experience in delivering cutting-edge solutions to businesses worldwide.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-bold mb-4 font-mono text-cyan-400">[OUR_MISSION]</h3>
+              <h3 className="text-2xl font-bold mb-4 font-mono text-blue-400">[OUR_MISSION]</h3>
               <p className="text-gray-300 mb-6 font-mono">
                 [EXECUTE] To transform innovative ideas into powerful software solutions that drive business growth and success in the digital age..
               </p>
@@ -502,8 +502,8 @@ export default function Home() {
             <div className="cyberpunk-card">
               <div className="text-center">
                 <div className="text-6xl font-bold cyberpunk-text mb-4 font-mono">[8+]</div>
-                <div className="text-xl text-cyan-400 mb-2 font-mono">YEARS_EXPERIENCE</div>
-                <div className="text-pink-400/60 font-mono">[STATUS: DELIVERING] Excellence in software development</div>
+                <div className="text-xl text-blue-400 mb-2 font-mono">YEARS_EXPERIENCE</div>
+                <div className="text-slate-400/60 font-mono">[STATUS: DELIVERING] Excellence in software development</div>
               </div>
             </div>
           </div>
@@ -530,7 +530,7 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[MEET_OUR_TEAM]</span>
             </h2>
-            <p className="text-xl text-cyan-400/80 max-w-3xl mx-auto font-mono">
+            <p className="text-xl text-blue-400/80 max-w-3xl mx-auto font-mono">
               [STATUS: ACTIVE] The brilliant minds behind PowerProject, dedicated to transforming your ideas into reality.
             </p>
           </div>
@@ -551,8 +551,8 @@ export default function Home() {
             {/* Placeholder for future team members */}
             <div className="flex justify-center">
               <div className="relative group cursor-pointer">
-                <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-52 lg:h-52 rounded-full overflow-hidden border-2 border-slate-600/30 group-hover:border-cyan-400/50 transition-all duration-300 bg-slate-800/50 flex items-center justify-center">
-                  <div className="text-slate-400 group-hover:text-cyan-400 transition-colors duration-300">
+                <div className="relative w-32 h-32 md:w-48 md:h-48 lg:w-52 lg:h-52 rounded-full overflow-hidden border-2 border-slate-600/30 group-hover:border-blue-400/50 transition-all duration-300 bg-slate-800/50 flex items-center justify-center">
+                  <div className="text-slate-400 group-hover:text-blue-400 transition-colors duration-300">
                     <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -569,7 +569,7 @@ export default function Home() {
           {/* Team Values */}
           <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 glass-card rounded-2xl">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
@@ -579,7 +579,7 @@ export default function Home() {
             </div>
 
             <div className="text-center p-6 glass-card rounded-2xl">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
@@ -589,7 +589,7 @@ export default function Home() {
             </div>
 
             <div className="text-center p-6 glass-card rounded-2xl">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-violet-500 to-blue-600 rounded-full flex items-center justify-center">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
@@ -611,34 +611,34 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[OUR_PROJECTS]</span>
             </h2>
-            <p className="text-xl text-cyan-400/80 font-mono">
+            <p className="text-xl text-blue-400/80 font-mono">
               [STATUS: SHOWCASING] Our expertise through successful project deliveries
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* FitFlex - Fitness Mobile App */}
             <div className="cyberpunk-card group">
-              <div className="w-full h-48 bg-gradient-to-br from-emerald-400/20 to-cyan-400/20 rounded-lg mb-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(0,212,170,0.1)_50%,transparent_70%)]"></div>
-                <div className="absolute top-2 left-2 text-emerald-400 font-mono text-xs">[FITNESS]</div>
+              <div className="w-full h-48 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-lg mb-4 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(59,130,246,0.1)_50%,transparent_70%)]"></div>
+                <div className="absolute top-2 left-2 text-blue-400 font-mono text-xs">[FITNESS]</div>
                 <div className="absolute bottom-2 right-2 text-cyan-400 font-mono text-xs">[FLUTTER]</div>
                 {/* Fitness icon overlay */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-6xl opacity-20">💪</div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold mb-2 font-mono text-emerald-400">[FITFLEX_MOBILE_APP]</h3>
+              <h3 className="text-xl font-bold mb-2 font-mono text-blue-400">[FITFLEX_MOBILE_APP]</h3>
               <p className="text-gray-300 text-sm mb-4 font-mono">[EXECUTE] Dynamic Flutter fitness app with workout plans, diet suggestions, and equipment guidance</p>
               <div className="flex flex-wrap gap-2 mb-4">
-                <span className="px-2 py-1 bg-emerald-400/20 text-emerald-400 text-xs font-mono rounded">Flutter</span>
+                <span className="px-2 py-1 bg-blue-400/20 text-blue-400 text-xs font-mono rounded">Flutter</span>
                 <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs font-mono rounded">Firebase</span>
-                <span className="px-2 py-1 bg-blue-400/20 text-blue-400 text-xs font-mono rounded">Mobile</span>
+                <span className="px-2 py-1 bg-slate-400/20 text-slate-400 text-xs font-mono rounded">Mobile</span>
               </div>
               <a 
                 href="https://github.com/LabridTech/FitFlex" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-emerald-400 hover:text-emerald-300 transition-colors cursor-pointer text-sm font-mono cyberpunk-glow inline-flex items-center gap-2"
+                className="text-blue-400 hover:text-blue-300 transition-colors cursor-pointer text-sm font-mono cyberpunk-glow inline-flex items-center gap-2"
               >
                 [VIEW_CODE] →
               </a>
@@ -646,10 +646,10 @@ export default function Home() {
 
             {/* E-Commerce Platform */}
             <div className="cyberpunk-card group">
-              <div className="w-full h-48 bg-gradient-to-br from-cyan-400/20 to-pink-400/20 rounded-lg mb-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(0,255,255,0.1)_50%,transparent_70%)]"></div>
+              <div className="w-full h-48 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-lg mb-4 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(6,182,212,0.1)_50%,transparent_70%)]"></div>
                 <div className="absolute top-2 left-2 text-cyan-400 font-mono text-xs">[E-COMMERCE]</div>
-                <div className="absolute bottom-2 right-2 text-pink-400 font-mono text-xs">[WEB]</div>
+                <div className="absolute bottom-2 right-2 text-blue-400 font-mono text-xs">[WEB]</div>
                 {/* E-commerce icon overlay */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-6xl opacity-20">🛒</div>
@@ -660,7 +660,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-2 mb-4">
                 <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs font-mono rounded">React</span>
                 <span className="px-2 py-1 bg-blue-400/20 text-blue-400 text-xs font-mono rounded">Node.js</span>
-                <span className="px-2 py-1 bg-green-400/20 text-green-400 text-xs font-mono rounded">MongoDB</span>
+                <span className="px-2 py-1 bg-slate-400/20 text-slate-400 text-xs font-mono rounded">MongoDB</span>
               </div>
               <button 
                 onClick={() => scrollToSection('contact')} 
@@ -672,25 +672,25 @@ export default function Home() {
 
             {/* AI Analytics Dashboard */}
             <div className="cyberpunk-card group">
-              <div className="w-full h-48 bg-gradient-to-br from-purple-400/20 to-cyan-400/20 rounded-lg mb-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(128,0,255,0.1)_50%,transparent_70%)]"></div>
-                <div className="absolute top-2 left-2 text-purple-400 font-mono text-xs">[AI_ANALYTICS]</div>
+              <div className="w-full h-48 bg-gradient-to-br from-violet-400/20 to-cyan-400/20 rounded-lg mb-4 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_30%,rgba(139,92,246,0.1)_50%,transparent_70%)]"></div>
+                <div className="absolute top-2 left-2 text-violet-400 font-mono text-xs">[AI_ANALYTICS]</div>
                 <div className="absolute bottom-2 right-2 text-cyan-400 font-mono text-xs">[AI]</div>
                 {/* AI icon overlay */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-6xl opacity-20">🤖</div>
                 </div>
               </div>
-              <h3 className="text-xl font-bold mb-2 font-mono text-purple-400">[AI_ANALYTICS_DASHBOARD]</h3>
+              <h3 className="text-xl font-bold mb-2 font-mono text-violet-400">[AI_ANALYTICS_DASHBOARD]</h3>
               <p className="text-gray-300 text-sm mb-4 font-mono">[EXECUTE] Intelligent analytics platform with machine learning and real-time insights</p>
               <div className="flex flex-wrap gap-2 mb-4">
-                <span className="px-2 py-1 bg-purple-400/20 text-purple-400 text-xs font-mono rounded">Python</span>
+                <span className="px-2 py-1 bg-violet-400/20 text-violet-400 text-xs font-mono rounded">Python</span>
                 <span className="px-2 py-1 bg-cyan-400/20 text-cyan-400 text-xs font-mono rounded">TensorFlow</span>
                 <span className="px-2 py-1 bg-blue-400/20 text-blue-400 text-xs font-mono rounded">React</span>
               </div>
               <button 
                 onClick={() => scrollToSection('contact')} 
-                className="text-purple-400 hover:text-purple-300 transition-colors cursor-pointer text-sm font-mono cyberpunk-glow"
+                className="text-violet-400 hover:text-violet-300 transition-colors cursor-pointer text-sm font-mono cyberpunk-glow"
               >
                 [VIEW_DETAILS] →
               </button>
@@ -710,7 +710,7 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[TECH_STACK]</span>
             </h2>
-            <p className="text-xl text-cyan-400/80 font-mono">
+            <p className="text-xl text-blue-400/80 font-mono">
               [STATUS: CUTTING_EDGE] Technologies for modern software development
             </p>
           </div>
@@ -746,10 +746,10 @@ export default function Home() {
                     quality={80}
                   />
                 </div>
-                <div className={`text-sm font-semibold font-mono ${tech.color} group-hover:text-cyan-400 transition-colors duration-300`}>
+                <div className={`text-sm font-semibold font-mono ${tech.color} group-hover:text-blue-400 transition-colors duration-300`}>
                   {tech.name}
                 </div>
-                <div className="mt-2 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="mt-2 w-full h-0.5 bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
             ))}
           </div>
@@ -766,7 +766,7 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 futuristic-heading px-4">
               <span className="cyberpunk-text">[READY_TO_START?]</span>
             </h2>
-            <p className="text-xl text-cyan-400/80 font-mono mb-8">
+            <p className="text-xl text-blue-400/80 font-mono mb-8">
               [INITIATE] Let&apos;s discuss your project and bring your vision to life
             </p>
             
@@ -776,8 +776,8 @@ export default function Home() {
                 <div className="flex items-center space-x-3">
                   <div className="text-2xl">📧</div>
                   <div>
-                    <div className="text-xs text-pink-400/60 font-mono">[EMAIL]</div>
-                    <a href="mailto:assist.powerproject@gmail.com" className="text-cyan-400 hover:text-cyan-300 transition-colors font-mono cyberpunk-glow">
+                    <div className="text-xs text-slate-400/60 font-mono">[EMAIL]</div>
+                    <a href="mailto:assist.powerproject@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors font-mono cyberpunk-glow">
                       assist.powerproject@gmail.com
                     </a>
                   </div>
@@ -788,8 +788,8 @@ export default function Home() {
                 <div className="flex items-center space-x-3">
                   <div className="text-2xl">📞</div>
                   <div>
-                    <div className="text-xs text-pink-400/60 font-mono">[PHONE]</div>
-                    <a href="tel:+923030009437" className="text-cyan-400 hover:text-cyan-300 transition-colors font-mono cyberpunk-glow">
+                    <div className="text-xs text-slate-400/60 font-mono">[PHONE]</div>
+                    <a href="tel:+923030009437" className="text-blue-400 hover:text-blue-300 transition-colors font-mono cyberpunk-glow">
                       +923-030-009-437
                     </a>
                   </div>
@@ -802,39 +802,39 @@ export default function Home() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-cyan-400 mb-2 font-mono">[NAME]</label>
+                  <label className="block text-sm font-medium text-blue-400 mb-2 font-mono">[NAME]</label>
                   <input 
                     type="text" 
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-black/50 border border-cyan-400/30 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors text-white font-mono cyberpunk-glow"
+                    className="w-full px-4 py-3 bg-black/50 border border-blue-400/30 rounded-lg focus:border-blue-400 focus:outline-none transition-colors text-white font-mono cyberpunk-glow"
                     placeholder="[ENTER_NAME]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-cyan-400 mb-2 font-mono">[EMAIL]</label>
+                  <label className="block text-sm font-medium text-blue-400 mb-2 font-mono">[EMAIL]</label>
                   <input 
                     type="email" 
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-black/50 border border-cyan-400/30 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors text-white font-mono cyberpunk-glow"
+                    className="w-full px-4 py-3 bg-black/50 border border-blue-400/30 rounded-lg focus:border-blue-400 focus:outline-none transition-colors text-white font-mono cyberpunk-glow"
                     placeholder="[ENTER_EMAIL]"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-cyan-400 mb-2 font-mono">[PROJECT_DESCRIPTION]</label>
+                <label className="block text-sm font-medium text-blue-400 mb-2 font-mono">[PROJECT_DESCRIPTION]</label>
                 <textarea 
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 bg-black/50 border border-cyan-400/30 rounded-lg focus:border-cyan-400 focus:outline-none transition-colors text-white font-mono cyberpunk-glow"
+                  className="w-full px-4 py-3 bg-black/50 border border-blue-400/30 rounded-lg focus:border-blue-400 focus:outline-none transition-colors text-white font-mono cyberpunk-glow"
                   placeholder="[DESCRIBE_PROJECT]"
                 ></textarea>
               </div>
@@ -863,15 +863,15 @@ export default function Home() {
               />
               <div className="text-2xl font-bold cyberpunk-text font-mono">PowerProject</div>
             </div>
-            <p className="text-cyan-400/80 mb-6 font-mono">
+            <p className="text-blue-400/80 mb-6 font-mono">
               [MISSION] Transforming ideas into digital reality with cutting-edge technology
             </p>
             <div className="flex justify-center space-x-6">
-              <a href="#" className="text-cyan-400/60 hover:text-cyan-400 transition-colors font-mono cyberpunk-glow">[LINKEDIN]</a>
-              <a href="https://github.com/powerproject-ltd/powerproject-ltd" target="_blank" rel="noopener noreferrer" className="text-cyan-400/60 hover:text-cyan-400 transition-colors font-mono cyberpunk-glow">[GITHUB]</a>
-              <a href="#" className="text-cyan-400/60 hover:text-cyan-400 transition-colors font-mono cyberpunk-glow">[TWITTER]</a>
+              <a href="#" className="text-blue-400/60 hover:text-blue-400 transition-colors font-mono cyberpunk-glow">[LINKEDIN]</a>
+              <a href="https://github.com/powerproject-ltd/powerproject-ltd" target="_blank" rel="noopener noreferrer" className="text-blue-400/60 hover:text-blue-400 transition-colors font-mono cyberpunk-glow">[GITHUB]</a>
+              <a href="#" className="text-blue-400/60 hover:text-blue-400 transition-colors font-mono cyberpunk-glow">[TWITTER]</a>
             </div>
-            <div className="mt-8 pt-8 border-t border-cyan-400/20 text-cyan-400/60 text-sm font-mono">
+            <div className="mt-8 pt-8 border-t border-blue-400/20 text-blue-400/60 text-sm font-mono">
               © 2025 PowerProject. [STATUS: ALL_RIGHTS_RESERVED]
             </div>
           </div>
