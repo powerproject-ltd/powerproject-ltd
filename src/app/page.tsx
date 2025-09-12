@@ -358,7 +358,7 @@ export default function Home() {
       </section>
 
       {/* Cyberpunk Stats Section */}
-      <section className="py-20 bg-black/50 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-slate-900/60 via-slate-800/40 to-gray-900/50 relative overflow-hidden">
         {/* Cyberpunk grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
         
@@ -384,10 +384,12 @@ export default function Home() {
       </section>
 
       {/* Cyberpunk Services Section */}
-      <section id="services" className="py-20 relative overflow-hidden">
-        {/* Cyberpunk background effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,255,255,0.05),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,0,128,0.05),transparent_50%)]"></div>
+      <section id="services" className="py-20 bg-gradient-to-br from-gray-950/95 via-gray-900/98 to-gray-950/95 relative overflow-hidden">
+        {/* Square box texture pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(75,85,99,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(75,85,99,0.08)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+        {/* Dark grey background effects */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(31,41,55,0.15),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(17,24,39,0.15),transparent_50%)]"></div>
         
         <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
@@ -464,7 +466,7 @@ export default function Home() {
       </section>
 
       {/* Cyberpunk About Section */}
-      <section id="about" className="py-20 relative overflow-hidden" aria-label="About section">
+      <section id="about" className="py-20 bg-gradient-to-br from-gray-900/40 via-slate-800/60 to-gray-900/40 relative overflow-hidden" aria-label="About section">
         {/* Cyberpunk matrix-style background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
         
@@ -511,10 +513,12 @@ export default function Home() {
       </section>
 
       {/* Team Section */}
-      <section id="team" className="py-20 relative overflow-hidden" aria-label="Team section">
-        {/* Professional background pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-800/30 to-slate-900/50"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,245,255,0.05)_0%,transparent_50%)]"></div>
+      <section id="team" className="py-20 bg-gradient-to-br from-gray-950/95 via-gray-900/98 to-gray-950/95 relative overflow-hidden" aria-label="Team section">
+        {/* Square box texture pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(75,85,99,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(75,85,99,0.08)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+        {/* Dark grey background pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900/60 via-gray-800/40 to-gray-900/60"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(31,41,55,0.15)_0%,transparent_50%)]"></div>
         
         <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
@@ -602,7 +606,7 @@ export default function Home() {
       </section>
 
       {/* Cyberpunk Projects Section */}
-      <section id="projects" className="py-20 bg-black/50 relative overflow-hidden">
+      <section id="projects" className="py-20 bg-gradient-to-br from-gray-900/50 via-slate-800/40 to-gray-900/50 relative overflow-hidden">
         {/* Cyberpunk grid overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
         
@@ -700,10 +704,10 @@ export default function Home() {
       </section>
 
       {/* Cyberpunk Tech Stack Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-gray-800/30 via-slate-900/50 to-gray-800/30 relative overflow-hidden">
         {/* Cyberpunk circuit board background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(0,255,255,0.03),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(255,0,128,0.03),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(59,130,246,0.03),transparent_50%)]"></div>
         
         <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
@@ -757,9 +761,11 @@ export default function Home() {
       </section>
 
       {/* Cyberpunk Contact Section */}
-      <section id="contact" className="py-20 relative overflow-hidden" aria-label="Contact section">
-        {/* Cyberpunk terminal background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
+      <section id="contact" className="py-20 bg-gradient-to-br from-gray-950/95 via-gray-900/98 to-gray-950/95 relative overflow-hidden" aria-label="Contact section">
+        {/* Square box texture pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(75,85,99,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(75,85,99,0.08)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+        {/* Dark grey terminal background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(31,41,55,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(31,41,55,0.1)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
         
         <div className="max-w-4xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
@@ -847,7 +853,7 @@ export default function Home() {
     </section>
 
       {/* Cyberpunk Footer */}
-      <footer className="bg-black border-t border-cyan-400/20 py-12 relative overflow-hidden">
+      <footer className="bg-gradient-to-br from-gray-900/80 via-slate-800/90 to-gray-900/80 border-t border-blue-400/20 py-12 relative overflow-hidden">
         {/* Cyberpunk grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         
